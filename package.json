@@ -1,0 +1,59 @@
+{
+  "name": "smooth-components",
+  "description": "A collection of smooth and elegant React components for building modern web applications.",
+  "version": "1.0.0",
+  "type": "module",
+  "author": "Jaime Torres",
+  "license": "MIT",
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/smooth-components.umd.cjs",
+  "module": "./dist/smooth-components.js",
+  "types": "./dist/smooth-components.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/smooth-components.js",
+      "require": "./dist/smooth-components.umd.cjs"
+    },
+    "./dist/smooth-components.css": "./dist/smooth-components.css"
+  },
+  "scripts": {
+    "dev": "vite --port 3000",
+    "build": "tsc -b && vite build",
+    "lint": "eslint .",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.25.0",
+    "@types/node": "^24.0.1",
+    "@types/react": "^19.1.2",
+    "@types/react-dom": "^19.1.2",
+    "@vitejs/plugin-react": "^4.4.1",
+    "eslint": "^9.25.0",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-react-refresh": "^0.4.19",
+    "globals": "^16.0.0",
+    "typescript": "~5.8.3",
+    "typescript-eslint": "^8.30.1",
+    "vite": "^6.3.5",
+    "vite-plugin-css-injected-by-js": "^3.5.2",
+    "vite-plugin-dts": "^4.5.4"
+  },
+  "keywords": [
+    "react",
+    "components",
+    "smooth",
+    "elegant",
+    "modern",
+    "web",
+    "application",
+    "development",
+    "poster",
+    "cinema"
+  ]
+}
