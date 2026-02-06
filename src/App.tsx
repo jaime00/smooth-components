@@ -1,20 +1,27 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import { Poster } from './components/Poster/Poster'
-const alt = 'Poster de la película la muerte del unicornio'
-const src =
-  'https://tickets-static-content-uat.cinepolis.com/pimcore/4690/assets/Mexico/Tickets/Movies/LaMuerteDeUnUnicornio/Es/P_ster_720x1022px/resource.jpg'
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
 
-createRoot(document.getElementById('root')!).render(
+import { Poster } from "@/components/Poster";
+
+createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <Poster
-      alt={alt}
-      hasGlintEffect={false}
-      src={src}
-      styles={{
-        width: '300px',
-        height: '450px',
+    <div
+      style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        minHeight: "100vh",
+        width: "100%",
       }}
-    />
+    >
+      <Poster
+        alt="Poster de la película la muerte del unicornio"
+        src="./akira.webp"
+        styles={{
+          width: "300px",
+          height: "450px",
+        }}
+      />
+    </div>
   </StrictMode>
-)
+);

@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run dev:*)",
+      "Bash(npm run build:*)",
+      "Bash(npm install:*)",
+      "Bash(npx tailwindcss:*)",
+      "Bash(./node_modules/.bin/tailwindcss init:*)",
+      "Bash(npm uninstall:*)",
+      "Bash(npx husky init)",
+      "Bash(npx prettier:*)",
+      "Bash(test:*)"
+    ]
+  }
+}

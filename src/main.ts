@@ -1,2 +1,1 @@
-import './components/Poster/Poster.css'
-export { Poster } from './components/Poster/Poster'
+export { Poster } from "@/components/Poster";

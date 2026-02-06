@@ -1,11 +1,10 @@
+import type { CSSProperties } from "react";
+
+export type PosterStyles = Pick<CSSProperties, "opacity" | "height" | "width">;
+
 export type PosterProps = {
-  alt: string
-  src: string
-  styles?: {
-    opacity?: number
-    height?: string
-    width?: string
-    borderColor?: string
-  }
-  hasGlintEffect?: boolean
-}
+  alt: string;
+  hasGlintEffect?: boolean;
+  src: string;
+  styles?: PosterStyles;
+};
