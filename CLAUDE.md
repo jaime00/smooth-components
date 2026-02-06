@@ -16,20 +16,22 @@ npm run format     # Prettier --write on entire project
 npm run preview    # Preview production build
 ```
 
-Pre-commit hook (Husky) auto-runs Prettier on all files before every commit.
+Pre-commit hook (Husky) auto-runs `prettier --write .` and `git add -A` before every commit.
 
 ## Architecture
 
 Each component follows a 4-file pattern:
 
 - `src/components/ComponentName.tsx` — Implementation (named export, no default exports)
-- `src/types/componentName.d.ts` — Type definitions (use `Pick<CSSProperties, ...>` for style props)
+- `src/types/componentName.d.ts` — Type definitions (use `Pick<CSSProperties, ...>` for style props; note the `.d.ts` extension)
 - `src/constants/componentName.ts` — Default values as `SCREAMING_SNAKE_CASE` constants
 - `src/styles/componentName.css` — Static styling (CSS classes, pseudo-elements for effects)
 
-All components are re-exported from `src/main.ts`, which is the library entry point.
+All components and their types are re-exported from `src/main.ts`, which is the library entry point. When adding a new component, add its export to `src/main.ts`.
 
 `src/App.tsx` is the dev preview app — it is **not** part of the library build.
+
+There is no test framework configured. The project has no tests.
 
 ## Component Conventions
 
@@ -41,7 +43,7 @@ All components are re-exported from `src/main.ts`, which is the library entry po
 
 ## Path Aliases
 
-`@` maps to `./src` — use `@/components/`, `@/constants/`, `@/types/`, `@/styles/` for imports.
+`@` maps to `./src` — use `@/components/`, `@/constants/`, `@/types/`, `@/styles/` for imports. These are configured in both `tsconfig.json` (for TypeScript) and `vite.config.ts` (for bundling).
 
 ## Code Style (enforced by Prettier)
 
@@ -56,4 +58,8 @@ Vite library mode produces:
 - `dist/smooth-components.umd.cjs` (UMD, global name: `SmoothComponents`)
 - `dist/smooth-components.d.ts` (declarations via `vite-plugin-dts` with rollup types)
 
-React and react-dom are externalized (not bundled).
+React, react-dom, and react/jsx-runtime are externalized (not bundled).
+
+## Publishing
+
+The package is published to npm. After bumping the version in `package.json`, run `npm run build` then `npm publish`. Only the `dist/` directory is included in the published package (`"files": ["dist"]`).

@@ -22,10 +22,7 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true,
     "paths": {
-      "@/components/*": ["./src/components/*"],
-      "@/constants/*": ["./src/constants/*"],
-      "@/types/*": ["./src/types/*"],
-      "@/styles/*": ["./src/styles/*"]
+      "@/*": ["./src/*"]
     }
   }
 }
