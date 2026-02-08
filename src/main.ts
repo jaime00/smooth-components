@@ -1,1 +1,1 @@
-export { Poster } from "@/components/Poster";
+export { Poster } from '@/components/Poster'

@@ -35,20 +35,20 @@ The `<Poster />` component is ideal for showcasing images like movie posters, ar
 ### Usage
 
 ```tsx
-import { Poster } from "smooth-components";
+import { Poster } from 'smooth-components'
 
-function App() {
+function Example() {
   return (
     <Poster
-      alt="Cyberpunk City"
-      src="/images/cyberpunk.jpg"
+      alt="Taxi Driver"
+      src="./cyberpunk.webp"
       styles={{
         width: 240,
         height: 360,
-        opacity: 0.95,
+        opacity: 0.95
       }}
     />
-  );
+  )
 }
 ```
 
