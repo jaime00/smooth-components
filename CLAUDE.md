@@ -47,12 +47,12 @@ There is no test framework configured. The project has no tests.
 
 ## Code Style (enforced by Prettier)
 
-- Double quotes, semicolons, 2-space indent, 120 char print width, ES5 trailing commas
-- Import order (enforced by `@trivago/prettier-plugin-sort-imports`): third-party → `@/assets` → `@/constants` → `@/components` → `@/types` → relative imports, with blank line separation
+- Single quotes, no semicolons, 2-space indent, 80 char print width, no trailing commas
+- Import order (enforced by `@trivago/prettier-plugin-sort-imports`): third-party → `@/*` → `@/assets/*` → `@/components/*` → `@/types/*` → `@/utils/*` → relative imports, with blank line separation
 
-## Build Output
+## Build & Tooling
 
-Vite library mode produces:
+Vite library mode with Tailwind CSS (`@tailwindcss/vite`) produces:
 
 - `dist/smooth-components.js` (ESM)
 - `dist/smooth-components.umd.cjs` (UMD, global name: `SmoothComponents`)
