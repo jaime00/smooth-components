@@ -17,7 +17,8 @@
       "Bash(NPM_TOKEN=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 npm publish --force --registry https://registry.npmjs.org/)",
       "Bash(npm set:*)",
       "Bash(git config:*)",
-      "Bash(git commit:*)"
+      "Bash(git commit:*)",
+      "Bash(node -p:*)"
     ]
   }
 }
