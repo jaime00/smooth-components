@@ -156,6 +156,17 @@
   left: 140%;
 }
 
+/* ===== FALLBACK (imagen no encontrada) ===== */
+.poster-image--fallback {
+  object-fit: contain;
+  background-color: #1a1a1a;
+  filter: none;
+}
+
+.poster-container:hover .poster-image--fallback {
+  filter: none;
+}
+
 /* ===== RESPONSIVE ===== */
 @media (min-width: 1024px) {
   .poster-container {

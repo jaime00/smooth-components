@@ -1,10 +1,7 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-
 import { Poster } from '@/components/Poster'
 
-createRoot(document.getElementById('root')!).render(
-  <StrictMode>
+export const App = () => {
+  return (
     <div
       style={{
         display: 'flex',
@@ -23,5 +20,5 @@ createRoot(document.getElementById('root')!).render(
         }}
       />
     </div>
-  </StrictMode>
-)
+  )
+}

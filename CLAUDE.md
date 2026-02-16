@@ -27,9 +27,9 @@ Each component follows a 4-file pattern:
 - `src/constants/componentName.ts` — Default values as `SCREAMING_SNAKE_CASE` constants
 - `src/styles/componentName.css` — Static styling (CSS classes, pseudo-elements for effects)
 
-All components and their types are re-exported from `src/main.ts`, which is the library entry point. When adding a new component, add its export to `src/main.ts`.
+All components and their types are re-exported from `src/index.ts`, which is the library entry point. When adding a new component, add its named export **and** its prop types export to `src/index.ts`.
 
-`src/App.tsx` is the dev preview app — it is **not** part of the library build.
+The dev preview app lives in two files — `src/main.tsx` (entry point with `createRoot`) and `src/App.tsx` (preview JSX). Neither is part of the library build. Dev-only styles live in `src/styles/index.css`.
 
 There is no test framework configured. The project has no tests.
 
@@ -37,7 +37,7 @@ There is no test framework configured. The project has no tests.
 
 - Props are destructured in the function body with defaults pulled from the constants file
 - Dynamic/user-controlled values use inline styles; all static styling lives in CSS files
-- CSS uses semantic class names prefixed with the component name (e.g., `.poster-container`, `.poster-image`)
+- CSS uses semantic class names prefixed with the component name (e.g., `.poster-container`, `.poster-image`). CSS comments may be in Spanish
 - Style props use a typed subset of `CSSProperties` via `Pick<>`
 - Accessibility props like `alt` are required, not optional
 
@@ -58,7 +58,9 @@ Vite library mode with Tailwind CSS (`@tailwindcss/vite`) produces:
 - `dist/smooth-components.umd.cjs` (UMD, global name: `SmoothComponents`)
 - `dist/smooth-components.d.ts` (declarations via `vite-plugin-dts` with rollup types)
 
-React, react-dom, and react/jsx-runtime are externalized (not bundled).
+React, react-dom, and react/jsx-runtime are externalized (not bundled). They are declared as `peerDependencies` (React 18 or 19).
+
+CSS is injected into the DOM at runtime via `vite-plugin-css-injected-by-js`, so consumers don't need a separate CSS import. The `package.json` also exports `./dist/smooth-components.css` as a fallback for consumers who prefer manual CSS loading.
 
 ## Publishing
 
