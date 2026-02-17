@@ -18,7 +18,8 @@
       "Bash(npm set:*)",
       "Bash(git config:*)",
       "Bash(git commit:*)",
-      "Bash(node -p:*)"
+      "Bash(node -p:*)",
+      "Bash(git add:*)"
     ]
   }
 }
