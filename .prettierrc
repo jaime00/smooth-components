@@ -13,5 +13,13 @@
   "semi": false,
   "singleQuote": true,
   "printWidth": 80,
-  "trailingComma": "none"
+  "trailingComma": "none",
+  "overrides": [
+    {
+      "files": "*.md",
+      "options": {
+        "embeddedLanguageFormatting": "off"
+      }
+    }
+  ]
 }

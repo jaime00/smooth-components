@@ -37,7 +37,7 @@ The `<Poster />` component is ideal for showcasing images like movie posters, ar
 ```tsx
 import { Poster } from 'smooth-components'
 
-;<Poster
+<Poster
   alt="Pulp Fiction"
   src="./pulp-fiction.jpg"
   hasGlintEffect={true}
