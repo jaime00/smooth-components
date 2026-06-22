@@ -19,7 +19,7 @@
     "./dist/smooth-components.css": "./dist/smooth-components.css"
   },
   "scripts": {
-    "dev": "vite --port 3000",
+    "dev": "vite --port 1111",
     "build": "tsc -b && vite build",
     "format": "prettier --write .",
     "lint": "eslint .",

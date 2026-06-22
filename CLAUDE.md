@@ -9,7 +9,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Commands
 
 ```bash
-npm run dev        # Dev server on port 3000
+npm run dev        # Dev server on port 1111
 npm run build      # TypeScript check + Vite library build
 npm run lint       # ESLint (flat config, TypeScript-aware)
 npm run format     # Prettier --write on entire project
@@ -37,7 +37,7 @@ There is no test framework configured. The project has no tests.
 
 - Props are destructured in the function body with defaults pulled from the constants file
 - Dynamic/user-controlled values use inline styles; all static styling lives in CSS files
-- CSS uses semantic class names prefixed with the component name (e.g., `.poster-container`, `.poster-image`). CSS comments may be in Spanish
+- CSS uses semantic class names prefixed with the component name (e.g., `.poster-container`, `.poster-image`). Variant classes use BEM-style modifiers (e.g., `.poster-container--no-frame`, `.poster-container--frame-sm`). CSS comments may be in Spanish
 - Style props use a typed subset of `CSSProperties` via `Pick<>`
 - Accessibility props like `alt` are required, not optional
 

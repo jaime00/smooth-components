@@ -40,6 +40,8 @@ import { Poster } from 'smooth-components'
 <Poster
   alt="Pulp Fiction"
   src="./pulp-fiction.jpg"
+  hasFrame={true}
+  frameSize="md"
   hasGlintEffect={true}
   styles={{
     height: '600px'
@@ -49,12 +51,14 @@ import { Poster } from 'smooth-components'
 
 ### Props
 
-| Prop             | Type           | Default | Required | Description                                      |
-| ---------------- | -------------- | ------- | -------- | ------------------------------------------------ |
-| `alt`            | `string`       | —       | Yes      | Descriptive alt text for accessibility.          |
-| `src`            | `string`       | —       | Yes      | Path or URL to the image.                        |
-| `styles`         | `PosterStyles` | —       | No       | Custom styles for the container (see below).     |
-| `hasGlintEffect` | `boolean`      | `true`  | No       | Enables animated glint overlay across the image. |
+| Prop             | Type                   | Default | Required | Description                                                     |
+| ---------------- | ---------------------- | ------- | -------- | --------------------------------------------------------------- |
+| `alt`            | `string`               | —       | Yes      | Descriptive alt text for accessibility.                         |
+| `src`            | `string`               | —       | Yes      | Path or URL to the image.                                       |
+| `styles`         | `PosterStyles`         | —       | No       | Custom styles for the container (see below).                    |
+| `hasFrame`       | `boolean`              | `true`  | No       | Shows or hides the 3D border frame around the image.            |
+| `frameSize`      | `'sm' \| 'md' \| 'lg'` | `'lg'`  | No       | Controls frame thickness: `sm` (6px), `md` (12px), `lg` (18px). |
+| `hasGlintEffect` | `boolean`              | `false` | No       | Enables animated glint overlay across the image.                |
 
 #### `PosterStyles`
 

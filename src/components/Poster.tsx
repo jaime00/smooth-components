@@ -2,6 +2,7 @@ import { useCallback, useRef, useState } from 'react'
 
 import {
   FALLBACK_IMAGE,
+  FRAME_SIZE,
   HAS_FRAME,
   HAS_GLINT_EFFECT,
   HEIGHT_DEFAULT,
@@ -14,6 +15,7 @@ import type { PosterProps } from '@/types/poster'
 export const Poster = (props: PosterProps) => {
   const {
     alt,
+    frameSize = FRAME_SIZE,
     hasFrame = HAS_FRAME,
     hasGlintEffect = HAS_GLINT_EFFECT,
     src,
@@ -35,7 +37,7 @@ export const Poster = (props: PosterProps) => {
 
   return (
     <div
-      className={`poster-container${!hasFrame ? ' poster-container--no-frame' : ''}`}
+      className={`poster-container${!hasFrame ? ' poster-container--no-frame' : ''}${hasFrame && frameSize !== 'lg' ? ` poster-container--frame-${frameSize}` : ''}`}
       style={{
         opacity,
         height,

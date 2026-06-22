@@ -1,2 +1,2 @@
 export { Poster } from '@/components/Poster'
-export type { PosterProps, PosterStyles } from '@/types/poster'
+export type { FrameSize, PosterProps, PosterStyles } from '@/types/poster'
