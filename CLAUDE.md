@@ -22,10 +22,10 @@ Pre-commit hook (Husky) auto-runs `prettier --write .` and `git add -A` before e
 
 Each component follows a 4-file pattern:
 
-- `src/components/ComponentName.tsx` — Implementation (named export, no default exports)
-- `src/types/componentName.d.ts` — Type definitions (use `Pick<CSSProperties, ...>` for style props; note the `.d.ts` extension)
-- `src/constants/componentName.ts` — Default values as `SCREAMING_SNAKE_CASE` constants
-- `src/styles/componentName.css` — Static styling (CSS classes, pseudo-elements for effects)
+- `src/components/ComponentName.tsx` — Implementation, **PascalCase** filename (named export, no default exports)
+- `src/types/componentName.d.ts` — Type definitions, **camelCase** filename (use `Pick<CSSProperties, ...>` for style props; note the `.d.ts` extension)
+- `src/constants/componentName.ts` — Default values, **camelCase** filename, `SCREAMING_SNAKE_CASE` constants
+- `src/styles/componentName.css` — Static styling, **camelCase** filename (CSS classes, pseudo-elements for effects)
 
 All components and their types are re-exported from `src/index.ts`, which is the library entry point. When adding a new component, add its named export **and** its prop types export to `src/index.ts`.
 
@@ -52,7 +52,7 @@ There is no test framework configured. The project has no tests.
 
 ## Build & Tooling
 
-Vite library mode with Tailwind CSS (`@tailwindcss/vite`) produces:
+Vite library mode with Tailwind CSS (`@tailwindcss/vite`) produces the following outputs. Note: Tailwind is available via the Vite plugin, but existing components use CSS puro with semantic classes prefixed by component name — prefer this convention for consistency.
 
 - `dist/smooth-components.js` (ESM)
 - `dist/smooth-components.umd.cjs` (UMD, global name: `SmoothComponents`)

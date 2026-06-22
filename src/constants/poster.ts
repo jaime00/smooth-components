@@ -1,6 +1,7 @@
 export const OPACITY_DEFAULT = 0.91
 export const WIDTH_DEFAULT = 'auto'
 export const HEIGHT_DEFAULT = 'auto'
+export const HAS_FRAME = true
 export const HAS_GLINT_EFFECT = false
 export const FALLBACK_IMAGE = `data:image/svg+xml,${encodeURIComponent(
   '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 560" fill="none">' +

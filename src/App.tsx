@@ -18,6 +18,8 @@ export const App = () => {
           width: '300px',
           height: '450px'
         }}
+        hasFrame={false}
+        hasGlintEffect={true}
       />
     </div>
   )
