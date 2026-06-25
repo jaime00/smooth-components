@@ -24,6 +24,7 @@
     "format": "prettier --write .",
     "lint": "eslint .",
     "preview": "vite preview",
+    "prepublishOnly": "npm run build",
     "prepare": "husky"
   },
   "peerDependencies": {
