@@ -216,6 +216,20 @@
   display: none;
 }
 
+/* ===== ANIMACIÓN DE ENTRADA ===== */
+.poster-container--scale-loading {
+  opacity: 0;
+  transform: scale(0.96);
+}
+
+.poster-container--scale-loaded {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  transition:
+    opacity 500ms ease,
+    transform 500ms ease;
+}
+
 /* ===== RESPONSIVE ===== */
 @media (min-width: 1024px) {
   .poster-container {

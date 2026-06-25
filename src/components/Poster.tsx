@@ -28,16 +28,22 @@ export const Poster = (props: PosterProps) => {
   } = styles ?? {}
 
   const [hasError, setHasError] = useState(false)
+  const [isLoaded, setIsLoaded] = useState(false)
   const imgRef = useRef<HTMLImageElement>(null)
 
   const handleError = useCallback(() => {
     setHasError(true)
+    setIsLoaded(true)
     if (imgRef.current) imgRef.current.src = FALLBACK_IMAGE
+  }, [])
+
+  const handleLoad = useCallback(() => {
+    setIsLoaded(true)
   }, [])
 
   return (
     <div
-      className={`poster-container${!hasFrame ? ' poster-container--no-frame' : ''}${hasFrame && frameSize !== 'lg' ? ` poster-container--frame-${frameSize}` : ''}`}
+      className={`poster-container${!hasFrame ? ' poster-container--no-frame' : ''}${hasFrame && frameSize !== 'lg' ? ` poster-container--frame-${frameSize}` : ''} poster-container--scale-${isLoaded ? 'loaded' : 'loading'}`}
       style={{
         opacity,
         height,
@@ -50,6 +56,7 @@ export const Poster = (props: PosterProps) => {
         src={src || FALLBACK_IMAGE}
         className={`poster-image${hasError ? ' poster-image--fallback' : ''}`}
         onError={handleError}
+        onLoad={handleLoad}
       />
       {hasGlintEffect && !hasError && (
         <div className="poster-image-glint"></div>

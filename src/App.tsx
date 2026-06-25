@@ -13,36 +13,12 @@ export const App = () => {
       }}
     >
       <Poster
-        alt="Poster con marco small"
+        alt="Poster con animación scale"
         src="./akira.webp"
-        frameSize="sm"
         styles={{
           width: '300px',
           height: '450px'
         }}
-        hasFrame={true}
-        hasGlintEffect={true}
-      />
-      <Poster
-        alt="Poster con marco medium"
-        src="./akira.webp"
-        frameSize="md"
-        styles={{
-          width: '300px',
-          height: '450px'
-        }}
-        hasFrame={true}
-        hasGlintEffect={true}
-      />
-      <Poster
-        alt="Poster con marco large"
-        src="./akira.webp"
-        frameSize="lg"
-        styles={{
-          width: '300px',
-          height: '450px'
-        }}
-        hasFrame={true}
         hasGlintEffect={true}
       />
     </div>
