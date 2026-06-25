@@ -17,6 +17,7 @@ export const Poster = (props: PosterProps) => {
     frameSize = FRAME_SIZE,
     hasFrame = HAS_FRAME,
     hasGlintEffect = HAS_GLINT_EFFECT,
+    onClick,
     src,
     styles
   } = props
@@ -38,8 +39,10 @@ export const Poster = (props: PosterProps) => {
       style={{
         opacity,
         height,
-        width
+        width,
+        cursor: onClick ? 'pointer' : undefined
       }}
+      onClick={onClick}
     >
       <img alt={alt} src={src} className="poster-image" onLoad={handleLoad} />
       {hasGlintEffect && <div className="poster-image-glint"></div>}

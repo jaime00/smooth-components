@@ -1,7 +1,7 @@
 {
   "name": "smooth-components",
   "description": "A collection of smooth and elegant React components for building modern web applications.",
-  "version": "1.1.16",
+  "version": "1.1.17",
   "type": "module",
   "author": "Jaime Torres",
   "license": "MIT",

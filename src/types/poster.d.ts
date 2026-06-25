@@ -9,6 +9,7 @@ export type PosterProps = {
   frameSize?: FrameSize
   hasFrame?: boolean
   hasGlintEffect?: boolean
+  onClick?: () => void
   src: string
   styles?: PosterStyles
 }
