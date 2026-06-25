@@ -40,7 +40,6 @@ There is no test framework configured. The project has no tests.
 - CSS uses semantic class names prefixed with the component name (e.g., `.poster-container`, `.poster-image`). Variant classes use BEM-style modifiers (e.g., `.poster-container--no-frame`, `.poster-container--frame-sm`). CSS comments may be in Spanish
 - Style props use a typed subset of `CSSProperties` via `Pick<>`
 - Accessibility props like `alt` are required, not optional
-- Components handle image error states with fallback images (e.g., `onError` + `useRef` to swap `src`)
 - `verbatimModuleSyntax` is enabled in `tsconfig.json` — always use `import type` for type-only imports
 
 ## Path Aliases
