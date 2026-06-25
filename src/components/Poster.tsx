@@ -1,7 +1,6 @@
-import { useCallback, useRef, useState } from 'react'
+import { useCallback, useState } from 'react'
 
 import {
-  FALLBACK_IMAGE,
   FRAME_SIZE,
   HAS_FRAME,
   HAS_GLINT_EFFECT,
@@ -27,15 +26,7 @@ export const Poster = (props: PosterProps) => {
     width = WIDTH_DEFAULT
   } = styles ?? {}
 
-  const [hasError, setHasError] = useState(false)
   const [isLoaded, setIsLoaded] = useState(false)
-  const imgRef = useRef<HTMLImageElement>(null)
-
-  const handleError = useCallback(() => {
-    setHasError(true)
-    setIsLoaded(true)
-    if (imgRef.current) imgRef.current.src = FALLBACK_IMAGE
-  }, [])
 
   const handleLoad = useCallback(() => {
     setIsLoaded(true)
@@ -50,17 +41,8 @@ export const Poster = (props: PosterProps) => {
         width
       }}
     >
-      <img
-        ref={imgRef}
-        alt={alt}
-        src={src || FALLBACK_IMAGE}
-        className={`poster-image${hasError ? ' poster-image--fallback' : ''}`}
-        onError={handleError}
-        onLoad={handleLoad}
-      />
-      {hasGlintEffect && !hasError && (
-        <div className="poster-image-glint"></div>
-      )}
+      <img alt={alt} src={src} className="poster-image" onLoad={handleLoad} />
+      {hasGlintEffect && <div className="poster-image-glint"></div>}
     </div>
   )
 }
