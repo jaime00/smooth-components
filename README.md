@@ -43,8 +43,11 @@ import { Poster } from 'smooth-components'
   hasFrame={true}
   frameSize="md"
   hasGlintEffect={true}
+  onClick={() => console.log('clicked')}
   styles={{
-    height: '600px'
+    opacity: 0.91,
+    height: '600px',
+    width: 'auto'
   }}
 />
 ```

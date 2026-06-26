@@ -20,6 +20,7 @@ export const App = () => {
           height: '450px'
         }}
         hasGlintEffect={true}
+        onClick={() => console.log('clicked')}
       />
     </div>
   )
