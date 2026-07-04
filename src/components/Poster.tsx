@@ -8,7 +8,9 @@ import {
   OPACITY_DEFAULT,
   WIDTH_DEFAULT
 } from '@/constants/poster'
+
 import '@/styles/poster.css'
+
 import type { PosterProps } from '@/types/poster'
 
 export const Poster = (props: PosterProps) => {

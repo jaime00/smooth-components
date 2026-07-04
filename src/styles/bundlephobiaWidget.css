@@ -1,0 +1,626 @@
+/* Contenedor principal */
+.bundlephobia-widget {
+  font-family:
+    'Inter',
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    sans-serif;
+  background: #ffffff;
+  border-radius: 28px;
+  padding: 40px;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.08);
+  max-width: 560px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.bundlephobia-widget--scale-loaded:hover {
+  transform: scale(1.02);
+}
+
+/* Tamaños */
+.bundlephobia-widget--sm {
+  max-width: 340px;
+  padding: 24px;
+  border-radius: 20px;
+}
+
+.bundlephobia-widget--md {
+  max-width: 460px;
+  padding: 32px;
+  border-radius: 24px;
+}
+
+/* SM spacing overrides */
+.bundlephobia-widget--sm .bundlephobia-widget__title-row {
+  margin-bottom: 20px;
+}
+
+.bundlephobia-widget--sm .bundlephobia-widget__metric {
+  padding: 12px 0;
+}
+
+.bundlephobia-widget--sm .bundlephobia-widget__download-time {
+  padding: 12px 0;
+}
+
+.bundlephobia-widget--sm .bundlephobia-widget__download-time-unit {
+  font-size: 11px;
+}
+
+/* MD spacing overrides */
+.bundlephobia-widget--md .bundlephobia-widget__header {
+  margin-bottom: 20px;
+}
+
+.bundlephobia-widget--md .bundlephobia-widget__title-row {
+  margin-bottom: 6px;
+}
+
+.bundlephobia-widget--md .bundlephobia-widget__name {
+  font-size: 24px;
+}
+
+.bundlephobia-widget--md .bundlephobia-widget__description {
+  margin-bottom: 16px;
+}
+
+.bundlephobia-widget--md .bundlephobia-widget__badges {
+  margin-bottom: 20px;
+}
+
+.bundlephobia-widget--md .bundlephobia-widget__metric {
+  padding: 14px 0;
+}
+
+.bundlephobia-widget--md .bundlephobia-widget__metric-label {
+  font-size: 12px;
+}
+
+.bundlephobia-widget--md .bundlephobia-widget__download-time {
+  padding: 14px 0;
+}
+
+.bundlephobia-widget--md .bundlephobia-widget__download-time-label {
+  font-size: 12px;
+}
+
+/* Skeleton */
+@keyframes bundlephobia-shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.bundlephobia-widget__skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: bundlephobia-shimmer 1.5s ease infinite;
+  border-radius: 6px;
+}
+
+.bundlephobia-widget__skeleton--logo {
+  width: 100px;
+  height: 12px;
+}
+
+.bundlephobia-widget__skeleton--title {
+  width: 140px;
+  height: 28px;
+  border-radius: 8px;
+}
+
+.bundlephobia-widget__skeleton--version {
+  width: 50px;
+  height: 22px;
+  border-radius: 8px;
+}
+
+.bundlephobia-widget__skeleton--description {
+  width: 100%;
+  height: 16px;
+  margin-bottom: 20px;
+}
+
+.bundlephobia-widget__skeleton--badge {
+  width: 110px;
+  height: 28px;
+  border-radius: 8px;
+}
+
+.bundlephobia-widget__skeleton--metric-value {
+  width: 80px;
+  height: 42px;
+  margin: 0 auto;
+  border-radius: 8px;
+}
+
+.bundlephobia-widget__skeleton--metric-label {
+  width: 60px;
+  height: 14px;
+  margin: 8px auto 0;
+}
+
+.bundlephobia-widget__skeleton--download-value {
+  width: 60px;
+  height: 28px;
+  margin: 0 auto;
+  border-radius: 8px;
+}
+
+/* SM skeleton adjustments */
+.bundlephobia-widget--sm .bundlephobia-widget__skeleton--title {
+  width: 100px;
+  height: 22px;
+}
+
+.bundlephobia-widget--sm .bundlephobia-widget__skeleton--version {
+  width: 40px;
+  height: 18px;
+}
+
+.bundlephobia-widget--sm .bundlephobia-widget__skeleton--metric-value {
+  width: 60px;
+  height: 30px;
+}
+
+.bundlephobia-widget--sm .bundlephobia-widget__skeleton--download-value {
+  width: 45px;
+  height: 22px;
+}
+
+/* Header con logo y botones */
+.bundlephobia-widget__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.bundlephobia-widget--sm .bundlephobia-widget__header {
+  margin-bottom: 16px;
+}
+
+.bundlephobia-widget__logo {
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    Segoe UI,
+    Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    Fira Sans,
+    Droid Sans,
+    Helvetica Neue,
+    sans-serif;
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.bundlephobia-widget__logo-bundle {
+  font-weight: 700;
+  color: #212121;
+  user-select: none;
+}
+
+.bundlephobia-widget__logo-phobia {
+  font-weight: 700;
+  color: #888;
+  user-select: none;
+}
+
+.bundlephobia-widget__header-actions {
+  display: flex;
+  gap: 6px;
+}
+
+.bundlephobia-widget__header-btn {
+  background: none;
+  border: 1px solid #ececec;
+  border-radius: 10px;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #8a8a8a;
+  transition:
+    border-color 0.2s,
+    color 0.2s,
+    background 0.2s;
+  text-decoration: none;
+}
+
+.bundlephobia-widget__header-btn:hover {
+  border-color: #999;
+  color: #555;
+  background: #f5f5f7;
+}
+
+.bundlephobia-widget--sm .bundlephobia-widget__header-btn {
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+}
+
+.bundlephobia-widget--md .bundlephobia-widget__header-btn {
+  width: 34px;
+  height: 34px;
+}
+
+/* Título (nombre + versión) */
+.bundlephobia-widget__title-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+}
+
+.bundlephobia-widget__name {
+  font-size: 28px;
+  font-weight: 600;
+  color: #1d1d1f;
+  margin: 0;
+}
+
+.bundlephobia-widget--sm .bundlephobia-widget__name {
+  font-size: 20px;
+}
+
+.bundlephobia-widget__version {
+  background: #61d68a;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 8px;
+}
+
+.bundlephobia-widget--sm .bundlephobia-widget__version {
+  font-size: 11px;
+  padding: 2px 8px;
+}
+
+/* Descripción */
+.bundlephobia-widget__description {
+  font-size: 16px;
+  font-weight: 400;
+  color: #737373;
+  margin: 0 0 20px;
+  line-height: 1.5;
+}
+
+/* Badges */
+.bundlephobia-widget__badges {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.bundlephobia-widget__badge {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #8a8a8a;
+  background: #f5f5f7;
+  padding: 5px 12px;
+  border-radius: 8px;
+}
+
+.bundlephobia-widget__badge svg {
+  width: 14px;
+  height: 14px;
+  color: #90dd97;
+}
+
+/* Métricas (sizes) */
+.bundlephobia-widget__metrics {
+  display: flex;
+  gap: 0;
+}
+
+.bundlephobia-widget__metric {
+  flex: 1;
+  text-align: center;
+  padding: 16px 0;
+}
+
+.bundlephobia-widget__metric + .bundlephobia-widget__metric {
+  border-left: 1px solid #ececec;
+}
+
+.bundlephobia-widget__metric-value {
+  font-size: 42px;
+  font-weight: 700;
+  color: #212121;
+  margin: 0;
+  line-height: 1;
+}
+
+.bundlephobia-widget--sm .bundlephobia-widget__metric-value {
+  font-size: 28px;
+}
+
+.bundlephobia-widget--md .bundlephobia-widget__metric-value {
+  font-size: 36px;
+}
+
+.bundlephobia-widget__metric-unit {
+  font-size: 20px;
+  font-weight: 700;
+  color: #666e78;
+}
+
+.bundlephobia-widget--sm .bundlephobia-widget__metric-unit {
+  font-size: 12px;
+}
+
+.bundlephobia-widget__metric-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #8a8a8a;
+  text-transform: uppercase;
+  margin: 8px 0 0;
+  letter-spacing: 0.5px;
+}
+
+.bundlephobia-widget--sm .bundlephobia-widget__metric-label {
+  font-size: 11px;
+}
+
+/* Divider */
+.bundlephobia-widget__divider {
+  border: none;
+  border-top: 1px solid #ececec;
+  margin: 0;
+}
+
+/* Tiempos de descarga */
+.bundlephobia-widget__download-times {
+  display: flex;
+  gap: 0;
+}
+
+.bundlephobia-widget__download-time {
+  flex: 1;
+  text-align: center;
+  padding: 16px 0;
+}
+
+.bundlephobia-widget__download-time + .bundlephobia-widget__download-time {
+  border-left: 1px solid #ececec;
+}
+
+.bundlephobia-widget__download-time-value {
+  font-size: 28px;
+  font-weight: 700;
+  color: #212121;
+  margin: 0;
+  line-height: 1;
+}
+
+.bundlephobia-widget--sm .bundlephobia-widget__download-time-value {
+  font-size: 20px;
+}
+
+.bundlephobia-widget--md .bundlephobia-widget__download-time-value {
+  font-size: 24px;
+}
+
+.bundlephobia-widget__download-time-unit {
+  font-size: 14px;
+  font-weight: 700;
+  color: #666e78;
+}
+
+.bundlephobia-widget__download-time-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #8a8a8a;
+  text-transform: uppercase;
+  margin: 8px 0 0;
+  letter-spacing: 0.5px;
+}
+
+.bundlephobia-widget--sm .bundlephobia-widget__download-time-label {
+  font-size: 11px;
+}
+
+/* Composición (footer) */
+.bundlephobia-widget__composition {
+  background: #eef3ff;
+  border-radius: 16px;
+  padding: 16px 20px;
+  margin-top: 20px;
+}
+
+.bundlephobia-widget__composition-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: #8a8a8a;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 0 0 12px;
+}
+
+.bundlephobia-widget__composition-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 0;
+}
+
+.bundlephobia-widget__composition-name {
+  font-size: 14px;
+  font-weight: 500;
+  color: #1d1d1f;
+}
+
+.bundlephobia-widget__composition-bar-container {
+  flex: 1;
+  height: 6px;
+  background: #dce4f5;
+  border-radius: 3px;
+  margin: 0 12px;
+  overflow: hidden;
+}
+
+.bundlephobia-widget__composition-bar {
+  height: 100%;
+  background: #5b7fd6;
+  border-radius: 3px;
+  transition: width 0.4s ease;
+}
+
+.bundlephobia-widget__composition-size {
+  font-size: 13px;
+  font-weight: 500;
+  color: #8a8a8a;
+  min-width: 50px;
+  text-align: right;
+}
+
+/* ===== ANIMACIÓN DE ENTRADA ===== */
+@keyframes bundlephobia-enter {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.bundlephobia-widget--scale-loaded {
+  animation: bundlephobia-enter 500ms ease both;
+  transition: transform 0.25s ease;
+}
+
+/* ===== DARK MODE ===== */
+.bundlephobia-widget--dark {
+  background: #171b22;
+  box-shadow:
+    0 16px 48px rgba(0, 0, 0, 0.5),
+    0 0 0 1px #2a313c;
+}
+
+.bundlephobia-widget--dark .bundlephobia-widget__logo-bundle {
+  color: #f5f7fa;
+}
+
+.bundlephobia-widget--dark .bundlephobia-widget__logo-phobia {
+  color: #6b7280;
+}
+
+.bundlephobia-widget--dark .bundlephobia-widget__header-btn {
+  border-color: #2a313c;
+  color: #8b93a2;
+}
+
+.bundlephobia-widget--dark .bundlephobia-widget__header-btn:hover {
+  border-color: #505a68;
+  color: #f5f7fa;
+  background: #1c2129;
+}
+
+.bundlephobia-widget--dark .bundlephobia-widget__name {
+  color: #f5f7fa;
+}
+
+.bundlephobia-widget--dark .bundlephobia-widget__version {
+  background: #42d392;
+  color: #0f1218;
+}
+
+.bundlephobia-widget--dark .bundlephobia-widget__description {
+  color: #a0a8b5;
+}
+
+.bundlephobia-widget--dark .bundlephobia-widget__badge {
+  background: #1c2129;
+  color: #a0a8b5;
+}
+
+.bundlephobia-widget--dark .bundlephobia-widget__metric-value {
+  color: #f5f7fa;
+}
+
+.bundlephobia-widget--dark .bundlephobia-widget__metric-unit {
+  color: #6b7280;
+}
+
+.bundlephobia-widget--dark .bundlephobia-widget__metric-label {
+  color: #6b7280;
+}
+
+.bundlephobia-widget--dark
+  .bundlephobia-widget__metric
+  + .bundlephobia-widget__metric {
+  border-left-color: #2a313c;
+}
+
+.bundlephobia-widget--dark .bundlephobia-widget__divider {
+  border-top-color: #2a313c;
+}
+
+.bundlephobia-widget--dark .bundlephobia-widget__download-time-value {
+  color: #f5f7fa;
+}
+
+.bundlephobia-widget--dark .bundlephobia-widget__download-time-unit {
+  color: #6b7280;
+}
+
+.bundlephobia-widget--dark .bundlephobia-widget__download-time-label {
+  color: #6b7280;
+}
+
+.bundlephobia-widget--dark
+  .bundlephobia-widget__download-time
+  + .bundlephobia-widget__download-time {
+  border-left-color: #2a313c;
+}
+
+.bundlephobia-widget--dark .bundlephobia-widget__composition {
+  background: #0f1218;
+}
+
+.bundlephobia-widget--dark .bundlephobia-widget__composition-title {
+  color: #6b7280;
+}
+
+.bundlephobia-widget--dark .bundlephobia-widget__composition-name {
+  color: #f5f7fa;
+}
+
+.bundlephobia-widget--dark .bundlephobia-widget__composition-bar-container {
+  background: #2a313c;
+}
+
+.bundlephobia-widget--dark .bundlephobia-widget__composition-bar {
+  background: #6d7fea;
+}
+
+.bundlephobia-widget--dark .bundlephobia-widget__composition-size {
+  color: #a0a8b5;
+}
+
+/* Dark mode skeleton */
+.bundlephobia-widget--dark .bundlephobia-widget__skeleton {
+  background: linear-gradient(90deg, #1c2129 25%, #2a313c 50%, #1c2129 75%);
+  background-size: 200% 100%;
+}

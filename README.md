@@ -26,6 +26,32 @@
 npm install smooth-components
 ```
 
+### Peer Dependencies
+
+Requires React 18 or 19:
+
+```json
+"react": "^18.0.0 || ^19.0.0"
+"react-dom": "^18.0.0 || ^19.0.0"
+```
+
+### CSS Loading
+
+Styles are injected automatically at runtime — no extra imports needed. If you need manual control (e.g. for SSR), you can import the stylesheet directly:
+
+```ts
+import 'smooth-components/dist/smooth-components.css'
+```
+
+### Importing Types
+
+All prop types are exported for use in your own components:
+
+```ts
+import type { PosterProps, PosterStyles, FrameSize } from 'smooth-components'
+import type { BundlephobiaWidgetProps } from 'smooth-components'
+```
+
 ---
 
 ## Poster
@@ -76,6 +102,42 @@ import { Poster } from 'smooth-components'
 
 ---
 
+## BundlephobiaWidget
+
+The `<BundlephobiaWidget />` component displays real-time bundle size data for any npm package, powered by the [Bundlephobia](https://bundlephobia.com) API. It shows minified/gzipped sizes, download times, tree-shaking support, dependency count, and composition — with built-in skeleton loading states.
+
+### Usage
+
+```tsx
+import { BundlephobiaWidget } from 'smooth-components'
+
+<BundlephobiaWidget
+  pkg="react@19.1.0"
+  size="lg"
+  repository="https://github.com/facebook/react"
+  isDarkMode={false}
+/>
+```
+
+### Props
+
+| Prop         | Type                                            | Default | Required | Description                                       |
+| ------------ | ----------------------------------------------- | ------- | -------- | ------------------------------------------------- |
+| `pkg`        | `` `${string}@${number}.${number}.${number}` `` | —       | Yes      | Package name with exact semver version.           |
+| `size`       | `'sm' \| 'md' \| 'lg'`                          | `'md'`  | No       | Widget size variant (controls visible sections).  |
+| `repository` | `string`                                        | —       | No       | URL to the source repository (shows GitHub link). |
+| `isDarkMode` | `boolean`                                       | `false` | No       | Enables dark mode styling.                        |
+
+### Size Variants
+
+| Size | Description                                           | Minified | Gzipped | Download times | Badges | Description text | Composition |
+| ---- | ----------------------------------------------------- | -------- | ------- | -------------- | ------ | ---------------- | ----------- |
+| `sm` | Compact — metrics and download times only             | ✓        | ✓       | ✓              | —      | —                | —           |
+| `md` | Standard — adds badges, description, and header links | ✓        | ✓       | ✓              | ✓      | ✓                | —           |
+| `lg` | Full — includes dependency composition breakdown      | ✓        | ✓       | ✓              | ✓      | ✓                | ✓           |
+
+---
+
 ## More Components Coming Soon
 
 Stay tuned for new additions including modals, cards, loaders, and more.
@@ -84,13 +146,13 @@ Stay tuned for new additions including modals, cards, loaders, and more.
 
 ## License
 
-MIT © [Jaime Torres](https://github.com/jaime00)
+MIT © [Jaime Torres](https://jaimetorresv.com)
 
 ---
 
 ## Connect
 
-- [Portfolio](https://jaime00portfolio.netlify.app/)
-- [LinkedIn](https://www.linkedin.com/in/jaime00)
+- [Portfolio](https://jaimetorresv.com)
+- [LinkedIn](https://www.linkedin.com/in/jaimetorresv)
 - [GitHub](https://github.com/jaime00)
 - [Email](mailto:imjaimetorresv@gmail.com)

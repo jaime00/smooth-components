@@ -19,7 +19,7 @@
     "./dist/smooth-components.css": "./dist/smooth-components.css"
   },
   "scripts": {
-    "dev": "vite --port 1111",
+    "dev": "vite --port 1111 --open",
     "build": "tsc -b && vite build",
     "format": "prettier --write .",
     "lint": "eslint .",
@@ -64,5 +64,8 @@
     "development",
     "poster",
     "cinema"
-  ]
+  ],
+  "dependencies": {
+    "motion": "^12.42.2"
+  }
 }
