@@ -48,7 +48,7 @@ There is no test framework configured. The project has no tests.
 - `verbatimModuleSyntax` is enabled in `tsconfig.json` — always use `import type` for type-only imports
 - Components that fetch external data (e.g., BundlephobiaWidget) manage their own loading/error states internally
 
-## Path Aliases
+## Path Aliases edjnjdendeednjdenjden
 
 `@` maps to `./src` — use `@/components/`, `@/constants/`, `@/types/`, `@/styles/`, `@/utils/` for imports. These are configured in both `tsconfig.json` (for TypeScript) and `vite.config.ts` (for bundling).
 
