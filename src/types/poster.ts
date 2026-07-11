@@ -6,6 +6,7 @@ export type PosterStyles = Pick<CSSProperties, 'opacity' | 'height' | 'width'>
 
 export type PosterProps = {
   alt: string
+  followCursor?: boolean
   frameSize?: FrameSize
   hasFrame?: boolean
   hasGlintEffect?: boolean

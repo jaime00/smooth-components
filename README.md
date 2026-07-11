@@ -88,6 +88,7 @@ import { Poster } from 'smooth-components'
 | `hasFrame`       | `boolean`              | `true`  | No       | Shows or hides the 3D border frame around the image.            |
 | `frameSize`      | `'sm' \| 'md' \| 'lg'` | `'lg'`  | No       | Controls frame thickness: `sm` (6px), `md` (12px), `lg` (18px). |
 | `hasGlintEffect` | `boolean`              | `false` | No       | Enables animated glint overlay across the image.                |
+| `followCursor`   | `boolean`              | `true`  | No       | Enables 3D tilt effect that follows the mouse cursor.           |
 | `onClick`        | `() => void`           | —       | No       | Callback function triggered when the poster is clicked.         |
 
 #### `PosterStyles`
