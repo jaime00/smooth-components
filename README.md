@@ -35,14 +35,6 @@ Requires React 18 or 19:
 "react-dom": "^18.0.0 || ^19.0.0"
 ```
 
-### CSS Loading
-
-Styles are injected automatically at runtime — no extra imports needed. If you need manual control (e.g. for SSR), you can import the stylesheet directly:
-
-```ts
-import 'smooth-components/dist/smooth-components.css'
-```
-
 ### Importing Types
 
 All prop types are exported for use in your own components:
