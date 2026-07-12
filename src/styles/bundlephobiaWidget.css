@@ -152,6 +152,22 @@
   border-radius: 8px;
 }
 
+/* Skeleton minimum dimensions por tamaño (contenido + padding × 2) */
+.bundlephobia-widget--sm:not(.bundlephobia-widget--scale-loaded) {
+  min-width: 303.047px;
+  min-height: 259px;
+}
+
+.bundlephobia-widget--md:not(.bundlephobia-widget--scale-loaded) {
+  min-width: 460px;
+  min-height: 426px;
+}
+
+.bundlephobia-widget--lg:not(.bundlephobia-widget--scale-loaded) {
+  min-width: 560px;
+  min-height: 594px;
+}
+
 /* SM skeleton adjustments */
 .bundlephobia-widget--sm .bundlephobia-widget__skeleton--title {
   width: 100px;
