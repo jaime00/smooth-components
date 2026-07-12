@@ -16,7 +16,7 @@
 }
 
 .bundlephobia-widget--scale-loaded:hover {
-  transform: scale(1.02);
+  transform: scale(1.015) translateY(-4px);
 }
 
 /* Tamaños */
@@ -522,8 +522,8 @@
 }
 
 .bundlephobia-widget--scale-loaded {
-  animation: bundlephobia-enter 500ms ease both;
-  transition: transform 0.25s ease;
+  animation: bundlephobia-enter 500ms ease backwards;
+  transition: all 400ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 /* ===== DARK MODE ===== */
