@@ -1,4 +1,4 @@
-import { useCallback, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 
 import {
   FOLLOW_CURSOR,
@@ -14,6 +14,8 @@ import {
 import '@/styles/poster.css'
 
 import type { PosterProps } from '@/types/poster'
+
+import { getCursorVars } from '@/utils/poster'
 
 export const Poster = (props: PosterProps) => {
   const {
@@ -34,32 +36,65 @@ export const Poster = (props: PosterProps) => {
 
   const containerRef = useRef<HTMLDivElement>(null)
   const [isLoaded, setIsLoaded] = useState(false)
-  const [cursorVars, setCursorVars] = useState({
-    rotateX: 0,
-    rotateY: 0,
-    x: 50,
-    y: 50
-  })
+  const rafRef = useRef<number | null>(null)
+  const pendingMouseRef = useRef<{ clientX: number; clientY: number } | null>(
+    null
+  )
+  const rectRef = useRef<DOMRect | null>(null)
 
   const handleLoad = useCallback(() => {
     setIsLoaded(true)
   }, [])
 
+  const handleMouseEnter = useCallback(() => {
+    if (containerRef.current) {
+      rectRef.current = containerRef.current.getBoundingClientRect()
+    }
+  }, [])
+
   const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
-    if (!containerRef.current) return
-    const rect = containerRef.current.getBoundingClientRect()
-    const x = ((e.clientX - rect.left) / rect.width) * 100
-    const y = ((e.clientY - rect.top) / rect.height) * 100
-    setCursorVars({
-      rotateX: (y - 50) * ROTATION_FORCE * -1,
-      rotateY: (x - 50) * ROTATION_FORCE,
-      x,
-      y
+    pendingMouseRef.current = { clientX: e.clientX, clientY: e.clientY }
+    if (rafRef.current !== null) return
+    rafRef.current = requestAnimationFrame(() => {
+      rafRef.current = null
+      const mouse = pendingMouseRef.current
+      const rect = rectRef.current
+      if (!mouse || !rect || !containerRef.current) return
+      const { rotateX, rotateY, x, y } = getCursorVars(
+        rect,
+        mouse.clientX,
+        mouse.clientY,
+        ROTATION_FORCE
+      )
+      const el = containerRef.current
+      el.style.setProperty('--rotate-x', `${rotateX}deg`)
+      el.style.setProperty('--rotate-y', `${rotateY}deg`)
+      el.style.setProperty('--x', `${x}%`)
+      el.style.setProperty('--y', `${y}%`)
     })
   }, [])
 
   const handleMouseLeave = useCallback(() => {
-    setCursorVars({ rotateX: 0, rotateY: 0, x: 50, y: 50 })
+    if (rafRef.current !== null) {
+      cancelAnimationFrame(rafRef.current)
+      rafRef.current = null
+    }
+    pendingMouseRef.current = null
+    if (containerRef.current) {
+      const el = containerRef.current
+      el.style.setProperty('--rotate-x', '0deg')
+      el.style.setProperty('--rotate-y', '0deg')
+      el.style.setProperty('--x', '50%')
+      el.style.setProperty('--y', '50%')
+    }
+  }, [])
+
+  useEffect(() => {
+    return () => {
+      if (rafRef.current !== null) {
+        cancelAnimationFrame(rafRef.current)
+      }
+    }
   }, [])
 
   return (
@@ -70,19 +105,20 @@ export const Poster = (props: PosterProps) => {
         opacity,
         height,
         width,
-        cursor: onClick ? 'pointer' : undefined,
-        ...(followCursor && {
-          ['--rotate-x' as string]: `${cursorVars.rotateX}deg`,
-          ['--rotate-y' as string]: `${cursorVars.rotateY}deg`,
-          ['--x' as string]: `${cursorVars.x}%`,
-          ['--y' as string]: `${cursorVars.y}%`
-        })
+        cursor: onClick ? 'pointer' : undefined
       }}
       onClick={onClick}
+      onMouseEnter={followCursor ? handleMouseEnter : undefined}
       onMouseMove={followCursor ? handleMouseMove : undefined}
       onMouseLeave={followCursor ? handleMouseLeave : undefined}
     >
-      <img alt={alt} src={src} className="poster-image" onLoad={handleLoad} />
+      <img
+        alt={alt}
+        src={src}
+        className="poster-image"
+        onLoad={handleLoad}
+        decoding="async"
+      />
       {hasGlintEffect && <div className="poster-image-glint"></div>}
       {followCursor && <div className="poster-follow-cursor-light" />}
     </div>

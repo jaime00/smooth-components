@@ -6,7 +6,9 @@
   overflow: hidden;
   cursor: pointer;
   transform: translateY(0) scale(1);
-  transition: all 400ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition:
+    transform 400ms cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    box-shadow 400ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
 
   /* Marco grueso con gradiente 3D */
   border: 18px solid;
@@ -76,8 +78,6 @@
         rgba(180, 220, 220, 0.02) 0%,
         rgba(180, 220, 220, 0.01) 100%
       );
-
-  transition: all 400ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 /* ===== POSTER IMAGE ===== */
@@ -91,7 +91,7 @@
   position: relative;
   z-index: 1;
   filter: contrast(0.97) brightness(0.98);
-  transition: all 400ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: filter 400ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 /* ===== GLINT (brillo deslizable en hover) ===== */
@@ -112,7 +112,7 @@
     transparent 80%
   );
   transform: skewX(-18deg);
-  transition: left 700ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: transform 700ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 /* ===== HOVER STATES ===== */
@@ -153,7 +153,7 @@
 }
 
 .poster-container:hover .poster-image-glint {
-  left: 140%;
+  transform: translateX(433.34%) skewX(-18deg);
 }
 
 /* ===== TAMAÑOS DE MARCO ===== */
@@ -232,7 +232,7 @@
 /* ===== FOLLOW CURSOR ===== */
 @media (pointer: fine) {
   .poster-container--follow-cursor {
-    will-change: transform, scale, box-shadow;
+    will-change: transform, scale;
     scale: 1;
     transform: perspective(1000px) rotateX(var(--rotate-x, 0deg))
       rotateY(var(--rotate-y, 0deg));
