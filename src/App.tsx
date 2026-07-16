@@ -3,13 +3,13 @@ import { useState } from 'react'
 import { BundlephobiaWidget } from '@/components/BundlephobiaWidget'
 import { Poster } from '@/components/Poster'
 
-type Component = 'BundlephobiaWidget' | 'Poster'
+type Component = '<BundlephobiaWidget />' | '<Poster />'
 
-const COMPONENTS: Component[] = ['BundlephobiaWidget', 'Poster']
+const COMPONENTS: Component[] = ['<BundlephobiaWidget />', '<Poster />']
 
 export const App = () => {
   const [isDarkMode, setIsDarkMode] = useState(false)
-  const [selected, setSelected] = useState<Component>('BundlephobiaWidget')
+  const [selected, setSelected] = useState<Component>('<BundlephobiaWidget />')
 
   const borderColor = isDarkMode ? '#2A313C' : '#ddd'
   const textMuted = isDarkMode ? '#6B7280' : '#999'
@@ -91,7 +91,7 @@ export const App = () => {
         })}
       </div>
 
-      {selected === 'BundlephobiaWidget' && (
+      {selected === '<BundlephobiaWidget />' && (
         <div
           style={{
             display: 'flex',
@@ -136,7 +136,7 @@ export const App = () => {
         </div>
       )}
 
-      {selected === 'Poster' && (
+      {selected === '<Poster />' && (
         <div
           style={{
             display: 'flex',

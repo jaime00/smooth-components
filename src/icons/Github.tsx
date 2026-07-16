@@ -62,17 +62,20 @@ const GithubIcon = forwardRef<GithubIconHandle, GithubIconProps>(
     const bodyControls = useAnimation()
     const tailControls = useAnimation()
     const isControlledRef = useRef(false)
+    const shouldWagRef = useRef(false)
 
     useImperativeHandle(ref, () => {
       isControlledRef.current = true
 
       return {
         startAnimation: async () => {
+          shouldWagRef.current = true
           bodyControls.start('animate')
           await tailControls.start('draw')
-          tailControls.start('wag')
+          if (shouldWagRef.current) tailControls.start('wag')
         },
         stopAnimation: () => {
+          shouldWagRef.current = false
           bodyControls.start('normal')
           tailControls.start('normal')
         }
@@ -84,9 +87,10 @@ const GithubIcon = forwardRef<GithubIconHandle, GithubIconProps>(
         if (isControlledRef.current) {
           onMouseEnter?.(e)
         } else {
+          shouldWagRef.current = true
           bodyControls.start('animate')
           await tailControls.start('draw')
-          tailControls.start('wag')
+          if (shouldWagRef.current) tailControls.start('wag')
         }
       },
       [bodyControls, onMouseEnter, tailControls]
@@ -97,6 +101,7 @@ const GithubIcon = forwardRef<GithubIconHandle, GithubIconProps>(
         if (isControlledRef.current) {
           onMouseLeave?.(e)
         } else {
+          shouldWagRef.current = false
           bodyControls.start('normal')
           tailControls.start('normal')
         }

@@ -89,18 +89,30 @@
 /* Skeleton */
 @keyframes bundlephobia-shimmer {
   0% {
-    background-position: -200% 0;
+    transform: translateX(0);
   }
   100% {
-    background-position: 200% 0;
+    transform: translateX(-80%);
   }
 }
 
 .bundlephobia-widget__skeleton {
-  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
-  background-size: 200% 100%;
-  animation: bundlephobia-shimmer 1.5s ease infinite;
+  background: #f0f0f0;
   border-radius: 6px;
+  position: relative;
+  overflow: hidden;
+}
+
+.bundlephobia-widget__skeleton::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 500%;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 40% 100%;
+  animation: bundlephobia-shimmer 1.5s ease infinite;
 }
 
 .bundlephobia-widget__skeleton--logo {
@@ -523,7 +535,10 @@
 
 .bundlephobia-widget--scale-loaded {
   animation: bundlephobia-enter 500ms ease backwards;
-  transition: all 400ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition:
+    transform 400ms cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    background 400ms cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    box-shadow 400ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 /* ===== DARK MODE ===== */
@@ -637,6 +652,9 @@
 
 /* Dark mode skeleton */
 .bundlephobia-widget--dark .bundlephobia-widget__skeleton {
+  background: #1c2129;
+}
+
+.bundlephobia-widget--dark .bundlephobia-widget__skeleton::after {
   background: linear-gradient(90deg, #1c2129 25%, #2a313c 50%, #1c2129 75%);
-  background-size: 200% 100%;
 }
