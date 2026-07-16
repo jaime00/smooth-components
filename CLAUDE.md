@@ -24,13 +24,16 @@ Pre-commit hook (Husky) runs three checks on staged files before every commit:
 
 ## Architecture
 
-Each component follows a 4-file pattern (with an optional 5th for utilities):
+Each component follows a 4-file pattern with up to 3 optional extras:
 
 - `src/components/ComponentName.tsx` — Implementation, **PascalCase** filename (named export, no default exports)
 - `src/types/componentName.ts` — Type definitions, **camelCase** filename (use `Pick<CSSProperties, ...>` for style props)
 - `src/constants/componentName.ts` — Default values, **camelCase** filename, `SCREAMING_SNAKE_CASE` constants
 - `src/styles/componentName.css` — Static styling, **camelCase** filename (CSS classes, pseudo-elements for effects)
 - `src/utils/componentName.ts` — Helper functions, **camelCase** filename (only when the component needs non-trivial logic like calculations or formatting)
+- `src/services/componentName.ts` — API/fetch logic, **camelCase** filename (only when the component fetches external data)
+
+Reusable SVG icons live in `src/icons/ComponentName.tsx` (PascalCase, named exports).
 
 All components and their types are re-exported from `src/index.ts`, which is the library entry point. When adding a new component, add its named export **and** its prop types export to `src/index.ts`.
 
@@ -71,4 +74,15 @@ CSS is injected into the DOM at runtime via `vite-plugin-css-injected-by-js`, so
 
 ## Publishing
 
-The package is published to npm. Run `npm publish` — the `prepublishOnly` script auto-builds before publishing. Only the `dist/` directory is included in the published package (`"files": ["dist"]`).
+Use the release scripts — they bump the version, build, and publish in one step:
+
+```bash
+npm run release:patch   # x.x.X  → stable
+npm run release:minor   # x.X.0  → stable
+npm run release:major   # X.0.0  → stable
+npm run release:prepatch   # x.x.X-0 → published with --tag next
+npm run release:preminor   # x.X.0-0 → published with --tag next
+npm run release:premajor   # X.0.0-0 → published with --tag next
+```
+
+Only the `dist/` directory is included in the published package (`"files": ["dist"]`).
