@@ -61,6 +61,7 @@ import { Poster } from 'smooth-components'
   hasFrame={true}
   frameSize="md"
   hasGlintEffect={true}
+  followCursor={true}
   onClick={() => console.log('clicked')}
   styles={{
     opacity: 0.91,

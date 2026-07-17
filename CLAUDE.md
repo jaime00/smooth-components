@@ -18,9 +18,9 @@ npm run preview    # Preview production build
 
 Pre-commit hook (Husky) runs three checks on staged files before every commit:
 
-1. Enforces `@/` alias imports — blocks relative imports that go beyond the same directory (e.g., `../`) in `.js/.jsx` files
-2. Runs ESLint on staged `.js/.jsx` files
-3. Runs Prettier on all staged files and re-stages them
+1. Enforces `@/` alias imports — blocks relative imports that go beyond the same directory (e.g., `../`) in `.js/.jsx` files only (not `.ts/.tsx`)
+2. Runs ESLint on staged `.js/.jsx` files only (not `.ts/.tsx`)
+3. Runs Prettier on **all** staged files and re-stages them
 
 ## Architecture
 
@@ -50,6 +50,7 @@ There is no test framework configured. The project has no tests.
 - Accessibility props like `alt` are required, not optional
 - `verbatimModuleSyntax` is enabled in `tsconfig.json` — always use `import type` for type-only imports
 - Components that fetch external data (e.g., BundlephobiaWidget) manage their own loading/error states internally
+- For cursor-driven interactive effects, set CSS custom properties directly via `element.style.setProperty()` inside a `requestAnimationFrame` callback (see `Poster` with `--rotate-x`, `--rotate-y`, `--x`, `--y`). The CSS then reads these vars with fallbacks (e.g., `var(--rotate-x, 0deg)`). This avoids React re-renders for high-frequency mouse events. Throttle with a `rafRef` + `pendingMouseRef` pattern to deduplicate frames.
 
 ## Path Aliases
 
