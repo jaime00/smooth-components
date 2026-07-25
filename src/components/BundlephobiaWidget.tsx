@@ -2,6 +2,7 @@ import { GithubIcon } from '@/icons/Github'
 import { useEffect, useState } from 'react'
 
 import {
+  DEFAULT_HAS_HOVER_EFFECT,
   DEFAULT_IS_DARK_MODE,
   DEFAULT_SIZE,
   EMERGING_4G_SPEED,
@@ -22,7 +23,8 @@ export const BundlephobiaWidget = (props: BundlephobiaWidgetProps) => {
     pkg,
     size = DEFAULT_SIZE,
     repository,
-    isDarkMode = DEFAULT_IS_DARK_MODE
+    isDarkMode = DEFAULT_IS_DARK_MODE,
+    hasHoverEffect = DEFAULT_HAS_HOVER_EFFECT
   } = props
 
   const [data, setData] = useState<BundlephobiaApiResponse | null>(null)
@@ -47,6 +49,7 @@ export const BundlephobiaWidget = (props: BundlephobiaWidgetProps) => {
 
   const sizeClass = `bundlephobia-widget--${size}`
   const darkClass = isDarkMode ? 'bundlephobia-widget--dark' : ''
+  const hoverClass = !hasHoverEffect ? 'bundlephobia-widget--no-hover' : ''
 
   const showDescription = size === 'md' || size === 'lg'
   const showBadges = size === 'md' || size === 'lg'
@@ -55,7 +58,9 @@ export const BundlephobiaWidget = (props: BundlephobiaWidgetProps) => {
 
   if (loading || error || !data) {
     return (
-      <div className={`bundlephobia-widget ${sizeClass} ${darkClass}`}>
+      <div
+        className={`bundlephobia-widget ${sizeClass} ${darkClass} ${hoverClass}`}
+      >
         <div className="bundlephobia-widget__header">
           <div className="bundlephobia-widget__skeleton bundlephobia-widget__skeleton--logo" />
         </div>
@@ -109,7 +114,7 @@ export const BundlephobiaWidget = (props: BundlephobiaWidgetProps) => {
 
   return (
     <div
-      className={`bundlephobia-widget ${sizeClass} ${darkClass} bundlephobia-widget--scale-loaded`}
+      className={`bundlephobia-widget ${sizeClass} ${darkClass} ${hoverClass} bundlephobia-widget--scale-loaded`}
     >
       {/* Header */}
       <div className="bundlephobia-widget__header">

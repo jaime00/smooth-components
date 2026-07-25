@@ -5,6 +5,7 @@ export type BundlephobiaWidgetProps = {
   size?: BundlephobiaSize
   repository?: string
   isDarkMode?: boolean
+  hasHoverEffect?: boolean
 }
 
 export type BundlephobiaDependencySize = {

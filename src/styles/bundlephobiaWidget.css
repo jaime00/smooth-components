@@ -19,6 +19,10 @@
   transform: scale(1.015) translateY(-4px);
 }
 
+.bundlephobia-widget--no-hover:hover {
+  transform: none;
+}
+
 /* Tamaños */
 .bundlephobia-widget--sm {
   max-width: 340px;
