@@ -5,4 +5,4 @@ export const WIDTH_DEFAULT = 'auto'
 export const HEIGHT_DEFAULT = 'auto'
 export const HAS_FRAME = true
 export const HAS_GLINT_EFFECT = false
-export const FRAME_SIZE = 'lg'
+export const FRAME_SIZE = 'sm'
