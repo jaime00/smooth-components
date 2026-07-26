@@ -59,7 +59,7 @@ import { Poster } from 'smooth-components'
   alt="Pulp Fiction"
   src="./pulp-fiction.jpg"
   hasFrame={true}
-  frameSize="md"
+  frameSize="sm"
   hasGlintEffect={true}
   followCursor={true}
   onClick={() => console.log('clicked')}
@@ -133,7 +133,7 @@ import { BundlephobiaWidget } from 'smooth-components'
 | Prop         | Type                                            | Default | Required | Description                                       |
 | ------------ | ----------------------------------------------- | ------- | -------- | ------------------------------------------------- |
 | `pkg`        | `` `${string}@${number}.${number}.${number}` `` | —       | Yes      | Package name with exact semver version.           |
-| `size`       | `'sm' \| 'md' \| 'lg'`                          | `'md'`  | No       | Widget size variant (controls visible sections).  |
+| `size`       | `'sm' \| 'md' \| 'lg'`                          | `'sm'`  | No       | Widget size variant (controls visible sections).  |
 | `repository` | `string`                                        | —       | No       | URL to the source repository (shows GitHub link). |
 | `isDarkMode` | `boolean`                                       | `false` | No       | Enables dark mode styling.                        |
 
