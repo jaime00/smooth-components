@@ -48,7 +48,7 @@ import type { BundlephobiaWidgetProps } from 'smooth-components'
 
 ## Poster
 
-The `<Poster />` component is ideal for showcasing images like movie posters, artworks, product covers, or any visual element that needs emphasis. It includes a 3D border effect, glass overlay, and an optional animated **glint** effect on hover.
+The `<Poster />` component is ideal for showcasing images and videos like movie posters, artworks, product covers, or any visual element that needs emphasis. It includes a 3D border effect, glass overlay, and an optional animated **glint** effect on hover. Pass a video URL (`.mp4`, `.webm`, etc.) to `src` and it will auto-detect, playing the video in loop with no controls.
 
 ### Usage
 
@@ -71,12 +71,27 @@ import { Poster } from 'smooth-components'
 />
 ```
 
+#### Video
+
+```tsx
+import { Poster } from 'smooth-components'
+
+<Poster
+  alt="Abstract animation"
+  src="https://example.com/video.mp4"
+  hasFrame={true}
+  frameSize="md"
+  followCursor={true}
+  styles={{ width: '500px' }}
+/>
+```
+
 ### Props
 
 | Prop             | Type                   | Default | Required | Description                                                     |
 | ---------------- | ---------------------- | ------- | -------- | --------------------------------------------------------------- |
 | `alt`            | `string`               | —       | Yes      | Descriptive alt text for accessibility.                         |
-| `src`            | `string`               | —       | Yes      | Path or URL to the image.                                       |
+| `src`            | `string`               | —       | Yes      | Path or URL to the image or video (`.mp4`, `.webm`, etc.).      |
 | `styles`         | `PosterStyles`         | —       | No       | Custom styles for the container (see below).                    |
 | `hasFrame`       | `boolean`              | `true`  | No       | Shows or hides the 3D border frame around the image.            |
 | `frameSize`      | `'sm' \| 'md' \| 'lg'` | `'lg'`  | No       | Controls frame thickness: `sm` (6px), `md` (12px), `lg` (18px). |
