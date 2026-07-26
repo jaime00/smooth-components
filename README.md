@@ -80,7 +80,7 @@ import { Poster } from 'smooth-components'
   alt="Abstract animation"
   src="https://example.com/video.mp4"
   hasFrame={true}
-  frameSize="md"
+  frameSize="sm"
   followCursor={true}
   styles={{ width: '500px' }}
 />
