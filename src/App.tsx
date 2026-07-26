@@ -169,7 +169,7 @@ export const App = () => {
                 {frameSize}
               </span>
               <Poster
-                src="https://cdn.posteritati.com/posters/000/000/074/006/2001-a-space-odyssey-md-web.jpg"
+                src="https://cdn.cosmos.so/bbeb8e56-4fbb-4f90-b2fd-9cc8c786d6a3.mp4"
                 alt="Poster de prueba"
                 frameSize={frameSize}
                 hasFrame

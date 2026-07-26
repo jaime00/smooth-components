@@ -15,7 +15,7 @@ import '@/styles/poster.css'
 
 import type { PosterProps } from '@/types/poster'
 
-import { getCursorVars } from '@/utils/poster'
+import { getCursorVars, isVideoUrl } from '@/utils/poster'
 
 export const Poster = (props: PosterProps) => {
   const {
@@ -35,6 +35,7 @@ export const Poster = (props: PosterProps) => {
   } = styles ?? {}
 
   const containerRef = useRef<HTMLDivElement>(null)
+  const videoRef = useRef<HTMLVideoElement>(null)
   const [isLoaded, setIsLoaded] = useState(false)
   const rafRef = useRef<number | null>(null)
   const pendingMouseRef = useRef<{ clientX: number; clientY: number } | null>(
@@ -97,6 +98,8 @@ export const Poster = (props: PosterProps) => {
     }
   }, [])
 
+  const isVideo = isVideoUrl(src)
+
   return (
     <div
       ref={containerRef}
@@ -112,13 +115,27 @@ export const Poster = (props: PosterProps) => {
       onMouseMove={followCursor ? handleMouseMove : undefined}
       onMouseLeave={followCursor ? handleMouseLeave : undefined}
     >
-      <img
-        alt={alt}
-        src={src}
-        className="poster-image"
-        onLoad={handleLoad}
-        decoding="async"
-      />
+      {isVideo ? (
+        <video
+          ref={videoRef}
+          src={src}
+          className="poster-video"
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="auto"
+          onLoadedData={handleLoad}
+        />
+      ) : (
+        <img
+          alt={alt}
+          src={src}
+          className="poster-image"
+          onLoad={handleLoad}
+          decoding="async"
+        />
+      )}
       {hasGlintEffect && <div className="poster-image-glint"></div>}
       {followCursor && <div className="poster-follow-cursor-light" />}
     </div>
