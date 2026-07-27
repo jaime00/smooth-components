@@ -56,8 +56,8 @@ The `<Poster />` component is ideal for showcasing images and videos like movie 
 import { Poster } from 'smooth-components'
 
 <Poster
-  alt="Pulp Fiction"
-  src="./pulp-fiction.jpg"
+  alt="My favorite poster hey!"
+  src="./severance.webp"
   hasFrame={true}
   frameSize="sm"
   hasGlintEffect={true}
