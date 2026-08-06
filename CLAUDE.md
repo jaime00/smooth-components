@@ -35,6 +35,8 @@ Each component follows a 4-file pattern with up to 3 optional extras:
 
 Reusable SVG icons live in `src/icons/ComponentName.tsx` (PascalCase, named exports).
 
+Skeleton loading components live in `src/components/skeletons/ComponentNameSkeleton.tsx` (PascalCase). These are internal — used by their parent component, not exported from `src/index.ts`.
+
 All components and their types are re-exported from `src/index.ts`, which is the library entry point. When adding a new component, add its named export **and** its prop types export to `src/index.ts`.
 
 The dev preview app lives in two files — `src/main.tsx` (entry point with `createRoot`) and `src/App.tsx` (preview JSX). Neither is part of the library build. Dev-only styles live in `src/styles/index.css`.

@@ -130,12 +130,13 @@ import { BundlephobiaWidget } from 'smooth-components'
 
 ### Props
 
-| Prop         | Type                                            | Default | Required | Description                                       |
-| ------------ | ----------------------------------------------- | ------- | -------- | ------------------------------------------------- |
-| `pkg`        | `` `${string}@${number}.${number}.${number}` `` | —       | Yes      | Package name with exact semver version.           |
-| `size`       | `'sm' \| 'md' \| 'lg'`                          | `'sm'`  | No       | Widget size variant (controls visible sections).  |
-| `repository` | `string`                                        | —       | No       | URL to the source repository (shows GitHub link). |
-| `isDarkMode` | `boolean`                                       | `false` | No       | Enables dark mode styling.                        |
+| Prop             | Type                                            | Default | Required | Description                                       |
+| ---------------- | ----------------------------------------------- | ------- | -------- | ------------------------------------------------- |
+| `pkg`            | `` `${string}@${number}.${number}.${number}` `` | —       | Yes      | Package name with exact semver version.           |
+| `size`           | `'sm' \| 'md' \| 'lg'`                          | `'sm'`  | No       | Widget size variant (controls visible sections).  |
+| `repository`     | `string`                                        | —       | No       | URL to the source repository (shows GitHub link). |
+| `isDarkMode`     | `boolean`                                       | `false` | No       | Enables dark mode styling.                        |
+| `hasHoverEffect` | `boolean`                                       | `true`  | No       | Enables hover lift effect on the widget.          |
 
 ### Size Variants
 
