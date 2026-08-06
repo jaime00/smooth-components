@@ -8,6 +8,18 @@ export type BundlephobiaWidgetProps = {
   hasHoverEffect?: boolean
 }
 
+export type BundlephobiaWidgetSkeletonProps = Pick<
+  BundlephobiaWidgetProps,
+  'size' | 'isDarkMode' | 'hasHoverEffect'
+>
+
+export type BundlephobiaSizeConfig = {
+  showDescription: boolean
+  showBadges: boolean
+  showHeaderActions: boolean
+  showComposition: boolean
+}
+
 export type BundlephobiaDependencySize = {
   approximateSize: number
   name: string
@@ -24,3 +36,8 @@ export type BundlephobiaApiResponse = {
   size: number
   version: string
 }
+
+export type BundlephobiaWidgetState =
+  | { status: 'loading' }
+  | { status: 'error'; error: string }
+  | { status: 'success'; data: BundlephobiaApiResponse }

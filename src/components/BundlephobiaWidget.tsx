@@ -1,11 +1,14 @@
 import { GithubIcon } from '@/icons/Github'
 import { useEffect, useState } from 'react'
 
+import { BundlephobiaWidgetSkeleton } from '@/components/skeletons/BundlephobiaWidgetSkeleton'
+
 import {
   DEFAULT_HAS_HOVER_EFFECT,
   DEFAULT_IS_DARK_MODE,
   DEFAULT_SIZE,
   EMERGING_4G_SPEED,
+  SIZE_CONFIG,
   SLOW_3G_SPEED
 } from '@/constants/bundlephobiaWidget'
 
@@ -13,8 +16,10 @@ import { fetchPackageData } from '@/services/bundlephobia'
 
 import '@/styles/bundlephobiaWidget.css'
 
-import type { BundlephobiaApiResponse } from '@/types/bundlephobiaWidget'
-import type { BundlephobiaWidgetProps } from '@/types/bundlephobiaWidget'
+import type {
+  BundlephobiaWidgetProps,
+  BundlephobiaWidgetState
+} from '@/types/bundlephobiaWidget'
 
 import { calcDownloadTime, formatBytes } from '@/utils/bundlePhobia'
 
@@ -27,81 +32,37 @@ export const BundlephobiaWidget = (props: BundlephobiaWidgetProps) => {
     hasHoverEffect = DEFAULT_HAS_HOVER_EFFECT
   } = props
 
-  const [data, setData] = useState<BundlephobiaApiResponse | null>(null)
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState<string | null>(null)
+  const [state, setState] = useState<BundlephobiaWidgetState>({
+    status: 'loading'
+  })
 
   useEffect(() => {
     const controller = new AbortController()
-    setLoading(true)
-    setError(null)
-    setData(null)
+    setState({ status: 'loading' })
 
     fetchPackageData(pkg, controller.signal)
-      .then((json) => setData(json))
+      .then((data) => setState({ status: 'success', data }))
       .catch((err) => {
-        if (err.name !== 'AbortError') setError(err.message)
+        if (err.name !== 'AbortError')
+          setState({ status: 'error', error: err.message })
       })
-      .finally(() => setLoading(false))
 
     return () => controller.abort()
   }, [pkg])
 
-  const sizeClass = `bundlephobia-widget--${size}`
-  const darkClass = isDarkMode ? 'bundlephobia-widget--dark' : ''
-  const hoverClass = !hasHoverEffect ? 'bundlephobia-widget--no-hover' : ''
+  const { showDescription, showBadges, showHeaderActions, showComposition } =
+    SIZE_CONFIG[size]
 
-  const showDescription = size === 'md' || size === 'lg'
-  const showBadges = size === 'md' || size === 'lg'
-  const showHeaderActions = size === 'md' || size === 'lg'
-  const showComposition = size === 'lg'
-
-  if (loading || error || !data) {
+  if (state.status !== 'success')
     return (
-      <div
-        className={`bundlephobia-widget ${sizeClass} ${darkClass} ${hoverClass}`}
-      >
-        <div className="bundlephobia-widget__header">
-          <div className="bundlephobia-widget__skeleton bundlephobia-widget__skeleton--logo" />
-        </div>
-        <div className="bundlephobia-widget__title-row">
-          <div className="bundlephobia-widget__skeleton bundlephobia-widget__skeleton--title" />
-          <div className="bundlephobia-widget__skeleton bundlephobia-widget__skeleton--version" />
-        </div>
-        {showDescription && (
-          <div className="bundlephobia-widget__skeleton bundlephobia-widget__skeleton--description" />
-        )}
-        {showBadges && (
-          <div className="bundlephobia-widget__badges">
-            <div className="bundlephobia-widget__skeleton bundlephobia-widget__skeleton--badge" />
-            <div className="bundlephobia-widget__skeleton bundlephobia-widget__skeleton--badge" />
-          </div>
-        )}
-        <div className="bundlephobia-widget__metrics">
-          <div className="bundlephobia-widget__metric">
-            <div className="bundlephobia-widget__skeleton bundlephobia-widget__skeleton--metric-value" />
-            <div className="bundlephobia-widget__skeleton bundlephobia-widget__skeleton--metric-label" />
-          </div>
-          <div className="bundlephobia-widget__metric">
-            <div className="bundlephobia-widget__skeleton bundlephobia-widget__skeleton--metric-value" />
-            <div className="bundlephobia-widget__skeleton bundlephobia-widget__skeleton--metric-label" />
-          </div>
-        </div>
-        <hr className="bundlephobia-widget__divider" />
-        <div className="bundlephobia-widget__download-times">
-          <div className="bundlephobia-widget__download-time">
-            <div className="bundlephobia-widget__skeleton bundlephobia-widget__skeleton--download-value" />
-            <div className="bundlephobia-widget__skeleton bundlephobia-widget__skeleton--metric-label" />
-          </div>
-          <div className="bundlephobia-widget__download-time">
-            <div className="bundlephobia-widget__skeleton bundlephobia-widget__skeleton--download-value" />
-            <div className="bundlephobia-widget__skeleton bundlephobia-widget__skeleton--metric-label" />
-          </div>
-        </div>
-      </div>
+      <BundlephobiaWidgetSkeleton
+        size={size}
+        isDarkMode={isDarkMode}
+        hasHoverEffect={hasHoverEffect}
+      />
     )
-  }
 
+  const { data } = state
   const isTreeShakeable = !!(data.hasJSModule || data.isModuleType)
   const hasNoDeps = data.dependencyCount === 0
   const slow3gTime = calcDownloadTime(data.gzip, SLOW_3G_SPEED)
@@ -112,9 +73,12 @@ export const BundlephobiaWidget = (props: BundlephobiaWidgetProps) => {
       ? Math.max(...data.dependencySizes.map((d) => d.approximateSize))
       : 1
 
+  const darkClass = isDarkMode ? 'bundlephobia-widget--dark' : ''
+  const hoverClass = !hasHoverEffect ? 'bundlephobia-widget--no-hover' : ''
+
   return (
     <div
-      className={`bundlephobia-widget ${sizeClass} ${darkClass} ${hoverClass} bundlephobia-widget--scale-loaded`}
+      className={`bundlephobia-widget bundlephobia-widget--${size} ${darkClass} ${hoverClass} bundlephobia-widget--scale-loaded`}
     >
       {/* Header */}
       <div className="bundlephobia-widget__header">

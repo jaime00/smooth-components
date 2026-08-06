@@ -98,8 +98,6 @@ export const Poster = (props: PosterProps) => {
     }
   }, [])
 
-  const isVideo = isVideoUrl(src)
-
   return (
     <div
       ref={containerRef}
@@ -115,7 +113,7 @@ export const Poster = (props: PosterProps) => {
       onMouseMove={followCursor ? handleMouseMove : undefined}
       onMouseLeave={followCursor ? handleMouseLeave : undefined}
     >
-      {isVideo ? (
+      {isVideoUrl(src) ? (
         <video
           ref={videoRef}
           src={src}
