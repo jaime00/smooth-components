@@ -5,4 +5,6 @@ export type {
   BundlephobiaSize,
   BundlephobiaWidgetProps
 } from '@/types/bundlephobiaWidget'
+export { HyperLink } from '@/components/HyperLink'
 export type { FrameSize, PosterProps, PosterStyles } from '@/types/poster'
+export type { HyperLinkProps, HyperLinkStyles } from '@/types/hyperLink'

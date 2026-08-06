@@ -1,11 +1,16 @@
 import { useState } from 'react'
 
 import { BundlephobiaWidget } from '@/components/BundlephobiaWidget'
+import { HyperLink } from '@/components/HyperLink'
 import { Poster } from '@/components/Poster'
 
-type Component = '<BundlephobiaWidget />' | '<Poster />'
+type Component = '<BundlephobiaWidget />' | '<Poster />' | '<HyperLink />'
 
-const COMPONENTS: Component[] = ['<BundlephobiaWidget />', '<Poster />']
+const COMPONENTS: Component[] = [
+  '<BundlephobiaWidget />',
+  '<Poster />',
+  '<HyperLink />'
+]
 
 export const App = () => {
   const [isDarkMode, setIsDarkMode] = useState(false)
@@ -133,6 +138,38 @@ export const App = () => {
               />
             </div>
           ))}
+        </div>
+      )}
+
+      {selected === '<HyperLink />' && (
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '2rem',
+            alignItems: 'center',
+            color: textPrimary,
+            transition: 'color 0.3s ease'
+          }}
+        >
+          <HyperLink href="https://github.com">
+            External link (default)
+          </HyperLink>
+
+          <HyperLink href="https://github.com" showIcon={false}>
+            No icon
+          </HyperLink>
+
+          <HyperLink href="https://github.com" showUnderline={false}>
+            No underline
+          </HyperLink>
+
+          <HyperLink
+            href="https://github.com"
+            styles={{ color: '#3B82F6', underscoreColor: '#3B82F6' }}
+          >
+            Custom colors
+          </HyperLink>
         </div>
       )}
 
