@@ -42,6 +42,7 @@ All prop types are exported for use in your own components:
 ```ts
 import type { PosterProps, PosterStyles, FrameSize } from 'smooth-components'
 import type { BundlephobiaWidgetProps } from 'smooth-components'
+import type { HyperLinkProps, HyperLinkStyles } from 'smooth-components'
 ```
 
 ---
@@ -145,6 +146,57 @@ import { BundlephobiaWidget } from 'smooth-components'
 | `sm` | Compact — metrics and download times only             | ✓        | ✓       | ✓              | —      | —                | —           |
 | `md` | Standard — adds badges, description, and header links | ✓        | ✓       | ✓              | ✓      | ✓                | —           |
 | `lg` | Full — includes dependency composition breakdown      | ✓        | ✓       | ✓              | ✓      | ✓                | ✓           |
+
+---
+
+## HyperLink
+
+The `<HyperLink />` component is a polymorphic link with an animated underline and an animated external-link icon that plays on hover. It renders an `<a>` by default but accepts any element type via the `as` prop (e.g. React Router's `Link`), making it easy to integrate with any routing library.
+
+### Usage
+
+```tsx
+import { HyperLink } from 'smooth-components'
+
+<HyperLink href="https://github.com" external>
+  Visit GitHub
+</HyperLink>
+```
+
+#### With a custom component
+
+```tsx
+import { Link } from 'react-router-dom'
+import { HyperLink } from 'smooth-components'
+
+<HyperLink as={Link} to="/about" showIcon={false}>
+  About page
+</HyperLink>
+```
+
+### Props
+
+| Prop               | Type              | Default | Required | Description                                                         |
+| ------------------ | ----------------- | ------- | -------- | ------------------------------------------------------------------- |
+| `children`         | `ReactNode`       | —       | Yes      | Content rendered inside the link.                                   |
+| `href`             | `string`          | —       | No       | URL destination (used when rendering as `<a>`).                     |
+| `as`               | `ElementType`     | `'a'`   | No       | Polymorphic element or component to render (e.g. `Link`).           |
+| `external`         | `boolean`         | `true`  | No       | Opens in a new tab with `noopener noreferrer`.                      |
+| `showIcon`         | `boolean`         | `true`  | No       | Shows an animated external-link icon (only when rendered as `<a>`). |
+| `icon`             | `ReactNode`       | —       | No       | Custom icon to replace the default animated icon.                   |
+| `styles`           | `HyperLinkStyles` | —       | No       | Custom styles (see below).                                          |
+| `className`        | `string`          | —       | No       | CSS class for the outer container.                                  |
+| `contentClassName` | `string`          | —       | No       | CSS class for the inner content wrapper.                            |
+| `showUnderline`    | `boolean`         | `true`  | No       | Shows an animated underline on hover.                               |
+
+> Any additional props are forwarded to the underlying element.
+
+#### `HyperLinkStyles`
+
+| Property          | Type     | Default          | Description                     |
+| ----------------- | -------- | ---------------- | ------------------------------- |
+| `color`           | `string` | —                | Text color of the link          |
+| `underscoreColor` | `string` | `'currentColor'` | Color of the animated underline |
 
 ---
 

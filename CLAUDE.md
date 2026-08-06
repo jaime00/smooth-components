@@ -33,7 +33,7 @@ Each component follows a 4-file pattern with up to 3 optional extras:
 - `src/utils/componentName.ts` — Helper functions, **camelCase** filename (only when the component needs non-trivial logic like calculations or formatting)
 - `src/services/componentName.ts` — API/fetch logic, **camelCase** filename (only when the component fetches external data)
 
-Reusable SVG icons live in `src/icons/ComponentName.tsx` (PascalCase, named exports).
+Reusable SVG icons live in `src/icons/ComponentName.tsx` (PascalCase, named exports). Animated SVG icons with imperative handles (e.g., `startAnimation`/`stopAnimation` via `forwardRef` + `useImperativeHandle`) live in `src/assets/animatedIcons/ComponentName.tsx`.
 
 Skeleton loading components live in `src/components/skeletons/ComponentNameSkeleton.tsx` (PascalCase). These are internal — used by their parent component, not exported from `src/index.ts`.
 
