@@ -2,3 +2,10 @@ export const HYPERLINK_EXTERNAL = true
 export const HYPERLINK_SHOW_ICON = true
 export const HYPERLINK_SHOW_UNDERLINE = true
 export const HYPERLINK_UNDERSCORE_COLOR = 'currentColor'
+
+export const HYPERLINK_PREVIEW_PLACEMENT = 'top' as const
+export const HYPERLINK_PREVIEW_WIDTH = 240
+export const HYPERLINK_PREVIEW_HEIGHT = 160
+export const HYPERLINK_PREVIEW_BORDER_RADIUS = 16
+export const HYPERLINK_PREVIEW_DELAY = 300
+export const HYPERLINK_PREVIEW_OFFSET = 8

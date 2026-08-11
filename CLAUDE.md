@@ -51,7 +51,9 @@ There is no test framework configured. The project has no tests.
 - Style props use a typed subset of `CSSProperties` via `Pick<>`
 - Accessibility props like `alt` are required, not optional
 - `verbatimModuleSyntax` is enabled in `tsconfig.json` — always use `import type` for type-only imports
-- Components that fetch external data (e.g., BundlephobiaWidget) manage their own loading/error states internally
+- Components that fetch external data manage their own loading/error states internally using a discriminated union: `type State = { status: 'loading' } | { status: 'error'; message: string } | { status: 'success'; ... }`. Always use AbortController + signal in the fetch, and cancel on cleanup.
+- When a component accepts a config object prop (e.g. `previewConfig`) that consumers may pass inline, store it in a ref (`const configRef = useRef(config); configRef.current = config`) and read from the ref inside `useCallback`/`setTimeout`. This prevents stale deps and avoids recreating callbacks on every parent render. Use primitive values extracted from the config object as `useEffect` dependencies instead of the object itself.
+- Preview popups that contain React components or media should render in a portal (`createPortal`) and remain **always mounted** (opacity controlled via `motion` `animate` prop, not conditional rendering). This ensures custom content fetches data once on mount, not on each hover open. Use `pointerEvents: 'none'` when hidden.
 - For cursor-driven interactive effects, set CSS custom properties directly via `element.style.setProperty()` inside a `requestAnimationFrame` callback (see `Poster` with `--rotate-x`, `--rotate-y`, `--x`, `--y`). The CSS then reads these vars with fallbacks (e.g., `var(--rotate-x, 0deg)`). This avoids React re-renders for high-frequency mouse events. Throttle with a `rafRef` + `pendingMouseRef` pattern to deduplicate frames.
 
 ## Path Aliases

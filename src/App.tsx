@@ -1,20 +1,29 @@
 import { useState } from 'react'
 
 import { BundlephobiaWidget } from '@/components/BundlephobiaWidget'
+import { ContributionsOnGithub } from '@/components/ContributionsOnGithub'
 import { HyperLink } from '@/components/HyperLink'
 import { Poster } from '@/components/Poster'
 
-type Component = '<BundlephobiaWidget />' | '<Poster />' | '<HyperLink />'
+type Component =
+  | '<BundlephobiaWidget />'
+  | '<Poster />'
+  | '<HyperLink />'
+  | '<ContributionsOnGithub />'
 
 const COMPONENTS: Component[] = [
   '<BundlephobiaWidget />',
   '<Poster />',
-  '<HyperLink />'
+  '<HyperLink />',
+  '<ContributionsOnGithub />'
 ]
 
 export const App = () => {
   const [isDarkMode, setIsDarkMode] = useState(false)
   const [selected, setSelected] = useState<Component>('<BundlephobiaWidget />')
+  const [posterUrl, setPosterUrl] = useState(
+    'https://cdn.cosmos.so/bbeb8e56-4fbb-4f90-b2fd-9cc8c786d6a3.mp4'
+  )
 
   const borderColor = isDarkMode ? '#2A313C' : '#ddd'
   const textMuted = isDarkMode ? '#6B7280' : '#999'
@@ -170,10 +179,101 @@ export const App = () => {
           >
             Custom colors
           </HyperLink>
+
+          <HyperLink
+            href="https://github.com/jaime00"
+            previewConfig={{
+              type: 'custom',
+              content: (
+                <ContributionsOnGithub
+                  username="jaime00"
+                  year={2026}
+                  isDarkMode={isDarkMode}
+                />
+              ),
+              placement: 'bottom'
+            }}
+          >
+            GitHub
+          </HyperLink>
         </div>
       )}
 
       {selected === '<Poster />' && (
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            gap: '2rem'
+          }}
+        >
+          <input
+            type="text"
+            value={posterUrl}
+            onChange={(e) => setPosterUrl(e.target.value)}
+            placeholder="Poster URL"
+            style={{
+              width: '100%',
+              maxWidth: 520,
+              padding: '7px 16px',
+              borderRadius: 9,
+              border: `1px solid ${borderColor}`,
+              background: isDarkMode ? '#1C2129' : '#fff',
+              color: textPrimary,
+              fontSize: 13,
+              fontWeight: 500,
+              outline: 'none',
+              transition: 'all 0.3s ease'
+            }}
+          />
+          <div
+            style={{
+              display: 'flex',
+              gap: '2rem',
+              flexWrap: 'wrap',
+              justifyContent: 'center',
+              alignItems: 'flex-start'
+            }}
+          >
+            {(['sm', 'md', 'lg'] as const).map((frameSize) => (
+              <div
+                key={frameSize}
+                style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  gap: 10
+                }}
+              >
+                <span
+                  style={{
+                    fontSize: 12,
+                    fontWeight: 600,
+                    letterSpacing: 1.5,
+                    textTransform: 'uppercase',
+                    color: textMuted,
+                    transition: 'color 0.3s ease'
+                  }}
+                >
+                  {frameSize}
+                </span>
+                <Poster
+                  src={posterUrl}
+                  alt="Poster de prueba"
+                  frameSize={frameSize}
+                  hasFrame
+                  hasGlintEffect
+                  styles={{ width: '500px' }}
+                  followCursor
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {selected === '<ContributionsOnGithub />' && (
         <div
           style={{
             display: 'flex',
@@ -183,9 +283,9 @@ export const App = () => {
             alignItems: 'flex-start'
           }}
         >
-          {(['sm', 'md', 'lg'] as const).map((frameSize) => (
+          {([14, 26, 52] as const).map((w) => (
             <div
-              key={frameSize}
+              key={w}
               style={{
                 display: 'flex',
                 flexDirection: 'column',
@@ -203,16 +303,13 @@ export const App = () => {
                   transition: 'color 0.3s ease'
                 }}
               >
-                {frameSize}
+                {w} weeks
               </span>
-              <Poster
-                src="https://cdn.cosmos.so/bbeb8e56-4fbb-4f90-b2fd-9cc8c786d6a3.mp4"
-                alt="Poster de prueba"
-                frameSize={frameSize}
-                hasFrame
-                hasGlintEffect
-                styles={{ width: '500px' }}
-                followCursor
+              <ContributionsOnGithub
+                username="jaime00"
+                year={2026}
+                isDarkMode={isDarkMode}
+                weeks={w}
               />
             </div>
           ))}

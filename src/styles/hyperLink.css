@@ -24,3 +24,24 @@
 .hyperlink:hover .hyperlink-underline {
   transform: scaleX(0);
 }
+
+/* Preview wrapper */
+.hyperlink-wrapper {
+  display: inline-flex;
+  position: relative;
+}
+
+/* Preview flotante */
+.hyperlink-preview {
+  position: absolute;
+  z-index: 9999;
+  pointer-events: auto;
+  overflow: hidden;
+}
+
+.hyperlink-preview-media {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
