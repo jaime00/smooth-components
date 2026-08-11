@@ -191,7 +191,7 @@ export const App = () => {
                   isDarkMode={isDarkMode}
                 />
               ),
-              placement: 'bottom'
+              placement: 'top'
             }}
           >
             GitHub

@@ -39,6 +39,7 @@ export function HyperLink<C extends ElementType = 'a'>({
   Omit<React.ComponentPropsWithoutRef<C>, keyof HyperLinkProps<C>>) {
   const iconRef = useRef<ExternalLinkIconHandle>(null)
   const wrapperRef = useRef<HTMLDivElement>(null)
+  const previewRef = useRef<HTMLDivElement>(null)
   const videoRef = useRef<HTMLVideoElement>(null)
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
   const previewConfigRef = useRef(previewConfig)
@@ -94,7 +95,16 @@ export function HyperLink<C extends ElementType = 'a'>({
     timerRef.current = setTimeout(() => {
       if (wrapperRef.current) {
         const rect = wrapperRef.current.getBoundingClientRect()
-        setPreviewPos(computePreviewPosition(rect, config))
+        let width = config.width
+        let height = config.height
+        if (previewRef.current) {
+          const previewRect = previewRef.current.getBoundingClientRect()
+          width = width ?? previewRect.width
+          height = height ?? previewRect.height
+        }
+        setPreviewPos(
+          computePreviewPosition(rect, { ...config, width, height })
+        )
       }
       setShowPreview(true)
     }, delay)
@@ -210,6 +220,7 @@ export function HyperLink<C extends ElementType = 'a'>({
   const preview = previewConfig
     ? createPortal(
         <motion.div
+          ref={previewRef}
           className="hyperlink-preview"
           onMouseEnter={isVisible ? cancelHide : undefined}
           onMouseLeave={isVisible ? scheduleHide : undefined}
