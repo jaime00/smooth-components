@@ -2,7 +2,7 @@
 
 **Elegant, customizable, and accessible React components.**
 
-`smooth-components` is a growing library of beautifully designed, reusable UI components for React. Whether you're building a portfolio, dashboard, or e-commerce site, these components help you move fast and look great — without sacrificing accessibility or flexibility.
+`smooth-components` is a library of animated, accessible React components. No CSS imports, full TypeScript support, smooth animations — out of the box.
 
 [![npm version](https://img.shields.io/npm/v/smooth-components.svg)](https://www.npmjs.com/package/smooth-components)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -11,9 +11,9 @@
 
 ## Features
 
-- **Zero CSS imports** — styles are automatically injected at runtime, no extra setup needed
-- **Fully typed** — built with TypeScript, includes type declarations out of the box
-- **Accessible** — components enforce accessibility props (e.g. required `alt` text)
+- **Zero CSS imports** — Styles inject automatically. No setup required.
+- **Fully typed** — TypeScript definitions for every component and prop.
+- **Accessible** — Components enforce accessibility props such as required `alt` text.
 - **Smooth animations** — hover effects, glint overlays, 3D borders, and glass reflections
 - **Lightweight** — React and react-dom are externalized, keeping the bundle small
 - **ESM & UMD** — works with any bundler or via CDN
@@ -37,7 +37,7 @@ Requires React 18 or 19:
 
 ### Importing Types
 
-All prop types are exported for use in your own components:
+All prop types are exported from the package:
 
 ```ts
 import type { PosterProps, PosterStyles, FrameSize } from 'smooth-components'
@@ -50,7 +50,7 @@ import type { ContributionsOnGithubProps } from 'smooth-components'
 
 ## Poster
 
-The `<Poster />` component is ideal for showcasing images and videos like movie posters, artworks, product covers, or any visual element that needs emphasis. It includes a 3D border effect, glass overlay, and an optional animated **glint** effect on hover. Pass a video URL (`.mp4`, `.webm`, etc.) to `src` and it will auto-detect, playing the video in loop with no controls.
+A 3D media card with tilt, glint, and frame effects. Accepts images and videos — pass a URL to `src` and `<Poster />` auto-detects the type, playing video in a silent loop.
 
 ### Usage
 
@@ -115,7 +115,7 @@ import { Poster } from 'smooth-components'
 
 ## BundlephobiaWidget
 
-The `<BundlephobiaWidget />` component displays real-time bundle size data for any npm package, powered by the [Bundlephobia](https://bundlephobia.com) API. It shows minified/gzipped sizes, download times, tree-shaking support, dependency count, and composition — with built-in skeleton loading states.
+Displays live bundle-size stats for any npm package via the [Bundlephobia](https://bundlephobia.com) API. Shows minified/gzipped sizes, download times, tree-shaking support, and dependency composition — with skeleton loading states.
 
 ### Usage
 
@@ -152,7 +152,7 @@ import { BundlephobiaWidget } from 'smooth-components'
 
 ## HyperLink
 
-The `<HyperLink />` component is a polymorphic link with an animated underline and an animated external-link icon that plays on hover. It renders an `<a>` by default but accepts any element type via the `as` prop (e.g. React Router's `Link`), making it easy to integrate with any routing library.
+An animated link with an external-link icon and retractable underline. Renders `<a>` by default; accepts any element via the `as` prop (e.g. React Router's `Link`).
 
 ### Usage
 
@@ -256,7 +256,7 @@ import { HyperLink, ContributionsOnGithub } from 'smooth-components'
 
 ## ContributionsOnGithub
 
-The `<ContributionsOnGithub />` component renders a GitHub-style contribution grid for any public user. It fetches data automatically, shows a skeleton while loading, and supports dark mode. Renders the last N weeks of activity with per-cell tooltips.
+A GitHub-style contribution grid for any public user. Fetches data automatically, shows a skeleton while loading, and supports dark mode. Renders the last N weeks with per-cell tooltips.
 
 ### Usage
 
