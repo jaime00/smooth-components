@@ -285,9 +285,9 @@ import { ContributionsOnGithub } from 'smooth-components'
 
 ---
 
-## More Components Coming Soon
+## 🚧 More Components Coming Soon
 
-Stay tuned for new additions including modals, cards, loaders, and more.
+Working on adding more components — modals, cards, loaders, and more.
 
 ---
 
