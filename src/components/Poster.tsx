@@ -98,6 +98,16 @@ export const Poster = (props: PosterProps) => {
     }
   }, [])
 
+  const handleKeyDown = useCallback(
+    (e: React.KeyboardEvent<HTMLDivElement>) => {
+      if (onClick && (e.key === 'Enter' || e.key === ' ')) {
+        e.preventDefault()
+        onClick()
+      }
+    },
+    [onClick]
+  )
+
   return (
     <div
       ref={containerRef}
@@ -108,7 +118,14 @@ export const Poster = (props: PosterProps) => {
         width,
         cursor: onClick ? 'pointer' : undefined
       }}
-      onClick={onClick}
+      {...(onClick
+        ? {
+            role: 'button',
+            tabIndex: 0,
+            onClick,
+            onKeyDown: handleKeyDown
+          }
+        : {})}
       onMouseEnter={followCursor ? handleMouseEnter : undefined}
       onMouseMove={followCursor ? handleMouseMove : undefined}
       onMouseLeave={followCursor ? handleMouseLeave : undefined}

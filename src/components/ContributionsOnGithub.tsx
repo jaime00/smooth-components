@@ -92,6 +92,7 @@ export const ContributionsOnGithub = ({
           target="_blank"
           rel="noopener noreferrer"
           className="contributions-header-icon"
+          aria-label={`${username} on GitHub`}
         >
           <ClassicGithubIcon />
         </a>

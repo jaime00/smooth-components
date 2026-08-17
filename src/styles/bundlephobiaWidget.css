@@ -654,6 +654,26 @@
   color: #a0a8b5;
 }
 
+/* ===== REDUCED MOTION ===== */
+@media (prefers-reduced-motion: reduce) {
+  .bundlephobia-widget__skeleton::after {
+    animation: none;
+  }
+
+  .bundlephobia-widget--scale-loaded {
+    animation: none;
+    transition: none;
+  }
+
+  .bundlephobia-widget__composition-bar {
+    transition: none;
+  }
+
+  .bundlephobia-widget__header-btn {
+    transition: none;
+  }
+}
+
 /* Dark mode skeleton */
 .bundlephobia-widget--dark .bundlephobia-widget__skeleton {
   background: #1c2129;

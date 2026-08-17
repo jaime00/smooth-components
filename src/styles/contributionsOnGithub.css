@@ -94,6 +94,29 @@
   border-radius: 3px;
 }
 
+/* ===== REDUCED MOTION ===== */
+@media (prefers-reduced-motion: reduce) {
+  .contributions-container {
+    transition: none;
+  }
+
+  .contributions-header-icon {
+    transition: none;
+  }
+
+  .contributions-header-text {
+    transition: none;
+  }
+
+  .contributions-cell {
+    transition: none;
+  }
+
+  .contributions-skeleton-pulse {
+    animation: none;
+  }
+}
+
 @keyframes contributions-pulse {
   0%,
   100% {

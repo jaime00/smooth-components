@@ -1,6 +1,6 @@
 import type { ExternalLinkIconHandle } from '@/assets/animatedIcons/ExternalLinkIcon'
 import { ExternalLinkIcon } from '@/assets/animatedIcons/ExternalLinkIcon'
-import { motion } from 'motion/react'
+import { LazyMotion, domAnimation, m } from 'motion/react'
 import type { ElementType } from 'react'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
@@ -43,7 +43,9 @@ export function HyperLink<C extends ElementType = 'a'>({
   const videoRef = useRef<HTMLVideoElement>(null)
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
   const previewConfigRef = useRef(previewConfig)
-  previewConfigRef.current = previewConfig
+  useEffect(() => {
+    previewConfigRef.current = previewConfig
+  })
   const [showPreview, setShowPreview] = useState(false)
   const [previewPos, setPreviewPos] = useState<{
     top: number
@@ -219,26 +221,28 @@ export function HyperLink<C extends ElementType = 'a'>({
 
   const preview = previewConfig
     ? createPortal(
-        <motion.div
-          ref={previewRef}
-          className="hyperlink-preview"
-          onMouseEnter={isVisible ? cancelHide : undefined}
-          onMouseLeave={isVisible ? scheduleHide : undefined}
-          initial={false}
-          animate={isVisible ? { opacity: 1 } : { opacity: 0 }}
-          transition={{ duration: 0.15 }}
-          style={{
-            top: previewPos?.top ?? 0,
-            left: previewPos?.left ?? 0,
-            width: previewWidth,
-            height: previewHeight,
-            borderRadius,
-            backgroundColor: previewConfig.backgroundColor,
-            pointerEvents: isVisible ? 'auto' : 'none'
-          }}
-        >
-          {renderPreviewContent()}
-        </motion.div>,
+        <LazyMotion features={domAnimation}>
+          <m.div
+            ref={previewRef}
+            className="hyperlink-preview"
+            onMouseEnter={isVisible ? cancelHide : undefined}
+            onMouseLeave={isVisible ? scheduleHide : undefined}
+            initial={false}
+            animate={isVisible ? { opacity: 1 } : { opacity: 0 }}
+            transition={{ duration: 0.15 }}
+            style={{
+              top: previewPos?.top ?? 0,
+              left: previewPos?.left ?? 0,
+              width: previewWidth,
+              height: previewHeight,
+              borderRadius,
+              backgroundColor: previewConfig.backgroundColor,
+              pointerEvents: isVisible ? 'auto' : 'none'
+            }}
+          >
+            {renderPreviewContent()}
+          </m.div>
+        </LazyMotion>,
         document.body
       )
     : null

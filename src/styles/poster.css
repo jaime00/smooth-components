@@ -257,6 +257,35 @@
   }
 }
 
+/* ===== REDUCED MOTION ===== */
+@media (prefers-reduced-motion: reduce) {
+  .poster-container {
+    transition: none;
+  }
+
+  .poster-image,
+  .poster-video {
+    transition: none;
+  }
+
+  .poster-image-glint {
+    transition: none;
+  }
+
+  .poster-container--scale-loaded {
+    transition: none;
+  }
+
+  .poster-container--follow-cursor {
+    transition: none;
+    will-change: auto;
+  }
+
+  .poster-container--follow-cursor:hover {
+    transition: none;
+  }
+}
+
 .poster-follow-cursor-light {
   position: absolute;
   top: 0;

@@ -25,6 +25,13 @@
   transform: scaleX(0);
 }
 
+/* ===== REDUCED MOTION ===== */
+@media (prefers-reduced-motion: reduce) {
+  .hyperlink-underline {
+    transition: none;
+  }
+}
+
 /* Preview wrapper */
 .hyperlink-wrapper {
   display: inline-flex;

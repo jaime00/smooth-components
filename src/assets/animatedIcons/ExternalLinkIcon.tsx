@@ -1,4 +1,4 @@
-import { motion, useAnimation } from 'motion/react'
+import { LazyMotion, domAnimation, m, useAnimation } from 'motion/react'
 import type { ComponentPropsWithoutRef, Ref } from 'react'
 import { forwardRef, useCallback, useImperativeHandle, useRef } from 'react'
 
@@ -81,10 +81,12 @@ const ExternalLinkIcon = forwardRef<
         xmlns="http://www.w3.org/2000/svg"
       >
         <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-        <motion.g animate={controls} variants={ARROW_VARIANTS}>
-          <path d="M15 3h6v6" />
-          <path d="M10 14 21 3" />
-        </motion.g>
+        <LazyMotion features={domAnimation}>
+          <m.g animate={controls} variants={ARROW_VARIANTS}>
+            <path d="M15 3h6v6" />
+            <path d="M10 14 21 3" />
+          </m.g>
+        </LazyMotion>
       </svg>
     </span>
   )
