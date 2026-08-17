@@ -1,7 +1,7 @@
 {
   "name": "smooth-components",
   "description": "Animated, accessible React components. No CSS imports, full TypeScript support, smooth animations — out of the box.",
-  "version": "1.1.47",
+  "version": "1.1.48",
   "type": "module",
   "author": "Jaime Torres",
   "license": "MIT",
