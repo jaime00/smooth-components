@@ -17,6 +17,9 @@ fi
 
 STAGED_FILES=$(git diff --cached --name-only --diff-filter=ACMR | grep -v '^\.claude/skills/' | sed 's| |\\ |g')
 
+# React Doctor check
+npx react-doctor@latest
+
 # ESLint on staged JS/JSX files
 STAGED_LINT=$(echo "$STAGED_FILES" | grep -E '\.(js|jsx)$' || true)
 if [ -n "$STAGED_LINT" ]; then
